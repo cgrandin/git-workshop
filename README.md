@@ -7,30 +7,30 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
 
 ## Useful commands in the Git Shell
 
-      git help                      <list git commands>
-      git clone url                 <clone repository>
-      git status                    <view changes & staging>
+      git help                      <List git commands>
+      git clone url                 <Clone repository found at url>
+      git status                    <View changes & staging>
       gitk                          <GUI - show revision tree information>
       git remote -v                 <Look at all remote data sources (URLs)>
-      git add FILENAME              <add new file called FILENAME>
-      git remove FILENAME           <remove existing file called FILENAME>
-      git rm FILENAME               <remove existing file called FILENAME>
-      git commit -a -m "MESSAGE"    <commit with MESSAGE recorded to the log>
-      git log                       <view commit log>
-      git branch                    <list branches>
-      git checkout -b NAME          <create new branch called NAME>
-      git checkout NAME             <switch to already-existing branch called NAME>
-      git branch -d NAME            <safely delete the branch called NAME>
-      git branch -D NAME            <forcibly delete the branch called NAME>
-      git log branchA ^branchB      <show log of every commit reachable by branchA but not branchB>
-      git log master ^origin/master <show log of every commit not yet pushed to the origin master on GitHub>
+      git add FILENAME              <Add new file called FILENAME>
+      git remove FILENAME           <Remove existing file called FILENAME>
+      git rm FILENAME               <Remove existing file called FILENAME>
+      git commit -a -m "MESSAGE"    <Commit with MESSAGE recorded to the log>
+      git log                       <View commit log>
+      git branch                    <List all branches>
+      git checkout -b NAME          <Create new branch called NAME>
+      git checkout NAME             <Switch to already-existing branch called NAME>
+      git branch -d NAME            <Safely delete the branch called NAME>
+      git branch -D NAME            <Forcibly delete the branch called NAME>
+      git log branchA ^branchB      <show log of commits in branchA but not in branchB>
+      git log master ^origin/master <Show difference between local master and origin/master (GitHub)>
 
 ## Useful Git aliases
-      git co  "NAME"                <Same as 'git checkout "NAME"'>
-      git cb  "NAME"                <Same as 'git checkout -b "NAME"'>
-      git com "MESSAGE"             <Same as 'git commit -a -m "MESSAGE"'>
-      git mas                       <Same as 'git log master ^origin/master'>
-      git pom                       <Same as 'git push origin master'>
+      git co  "NAME"                <Change to branch "NAME", same as 'git checkout "NAME"'>
+      git cb  "NAME"                <Create branch "NAME", same as 'git checkout -b "NAME"'>
+      git com "MESSAGE"             <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
+      git mas                       <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
+      git pom                       <Push to origin/master (Github), same as 'git push origin master'>
       git dl                        <Show modified files in last commit>
       git dlc                       <Show file differences in last commit>
       git lg                        <Show merge structure in a colored format>
