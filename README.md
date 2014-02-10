@@ -40,7 +40,8 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
 ## Advanced setup
 
 These commands are used when you have two Github users setup on the same machine, using SSH keys.
-The email address found in the .gitconfig file is the one used to push.
+The email address found in the **.gitconfig** file is the one used to push. The **u1** and **u2** commands simply
+change the address in **.gitconfig**.
 
       git wu                        <Show which user is setup to commit next (must have ssh keys setup)>
       git u1                        <Switch to user 1 (cgrandin@shaw.ca)>
