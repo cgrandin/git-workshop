@@ -26,19 +26,20 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git log master ^origin/master <Show difference between local master and origin/master (GitHub)>
 
 ## Useful Git aliases
+      git s                         <View status of the repository, same as 'git status'>
       git co  "NAME"                <Change to branch "NAME", same as 'git checkout "NAME"'>
       git cb  "NAME"                <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"             <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
+      git pom                       <Push to origin/master (Github), same as 'git push origin master'>
       git mas                       <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
       git sam                       <Show difference between origin/master and local master, same as 'git log ^master origin/master'>
-      git pom                       <Push to origin/master (Github), same as 'git push origin master'>
       git dl                        <Show modified files in last commit>
       git dlc                       <Show file differences in last commit>
       git lg                        <Show merge structure in a colored format>
       git lds                       <Show one-line commits in a colored format>
       git ld                        <Show one-line commits with reletive times in a colored format>
 
-## Advanced setup
+## Advanced aliases used for setup of two users
 
 These commands are used when you have two Github users setup on the same machine, using SSH keys.
 The email address found in the **.gitconfig** file is the one used to push. The **u1** and **u2** commands simply
