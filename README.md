@@ -55,6 +55,6 @@ There are many online resources for GIT and
 most of them can be found at: http://git-scm.com/documentation
 
 A very useful video tutorial, a must watch if you will be using GIT: http://www.youtube.com/watch?v=ZDR433b0HJY
-CJG
+
 ---
 
