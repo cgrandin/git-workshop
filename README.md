@@ -30,6 +30,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git cb  "NAME"                <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"             <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
       git mas                       <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
+      git sam                       <Show difference between origin/master and local master, same as 'git log ^master origin/master'>
       git pom                       <Push to origin/master (Github), same as 'git push origin master'>
       git dl                        <Show modified files in last commit>
       git dlc                       <Show file differences in last commit>
