@@ -26,6 +26,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git log master ^origin/master <Show difference between local master and origin/master (GitHub)>
 
 ## Useful Git aliases
+      git r                         <View remote URLs for the project, same as 'git remote -v'>
       git s                         <View status of the repository, same as 'git status'>
       git co  "NAME"                <Change to branch "NAME", same as 'git checkout "NAME"'>
       git cb  "NAME"                <Create branch "NAME", same as 'git checkout -b "NAME"'>
