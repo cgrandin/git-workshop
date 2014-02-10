@@ -4,9 +4,6 @@ ____
 git-workshop is a teaching repository
 Created by Chris Grandin on Feb 10, 2014
 
-Source code: https://github.com/cgrandin/git-workshop
-_____________________________________________________________
-
 ---
 
 ## Useful commands in the Git Shell
