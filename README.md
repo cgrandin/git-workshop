@@ -26,6 +26,21 @@ Created by Chris Grandin on Feb 10, 2014
       git log branchA ^branchB      <show log of every commit reachable by branchA but not branchB>
       git log master ^origin/master <show log of every commit not yet pushed to the origin master on GitHub>
 
+## Git aliases I use
+      git com "MESSAGE"             <Same as 'git commit -a -m "MESSAGE"'>
+      git mas                       <Same as 'git log master ^origin/master'>
+      git pom                       <Same as 'git push origin master'>
+      git dl                        <Show modified files in last commit>
+      git dlc                       <Show file differences in last commit>
+      git lg                        <Show merge structure in a colored format>
+      git lds                       <Show one-line commits in a colored format>
+      git ld                        <Show one-line commits with reletive times in a colored format>
+
+      git wu                        <Show which user is setup to commit next (must have ssh keys setup)>
+      git u1                        <Switch to user 1 (cgrandin@shaw.ca)>
+      git u2                        <Switch to user 2 (chrisgrandin@gmail.com)>
+
+
 There are many online resources for GIT and
 most of them can be found at: http://git-scm.com/documentation
 
