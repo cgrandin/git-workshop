@@ -44,15 +44,6 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git lds                       <Show one-line commits in a colored format>
       git ld                        <Show one-line commits with reletive times in a colored format>
 
-## Advanced aliases used for setup of two users
-
-These commands are used when you have two Github users setup on the same machine, using SSH keys.
-The email address found in the .gitconfig file is the one used to push. The u1 and u2 commands simply change the address in .gitconfig.
-
-      git wu                        <Show which user is setup to commit next (must have ssh keys setup)>
-      git u1                        <Switch to user 1 (cgrandin@shaw.ca)>
-      git u2                        <Switch to user 2 (chrisgrandin@gmail.com)>
-
 There are many online resources for GIT and most of them can be found at: http://git-scm.com/documentation
 
 A very useful video tutorial, a must watch if you will be using GIT: http://www.youtube.com/watch?v=ZDR433b0HJY
