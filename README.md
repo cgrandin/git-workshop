@@ -27,7 +27,6 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git log master ^origin/master <Show difference between local master and origin/master (GitHub)>
       git push origin --delete NAME <Delete the branch NAME from the remote>
       git log --diff-filter=D --summary <Shows all files which were ever deleted and then committed>
-      git checkout $commit~1 filename   <Restores a previously deteted file>
 
 ## Useful Git aliases
       git r                         <View remote URLs for the project, same as 'git remote -v'>
