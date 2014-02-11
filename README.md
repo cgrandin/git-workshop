@@ -28,6 +28,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
 ## Useful Git aliases
       git r                         <View remote URLs for the project, same as 'git remote -v'>
       git s                         <View status of the repository, same as 'git status'>
+      git f                         <View sync information between remote/master and master>
       git co  "NAME"                <Change to branch "NAME", same as 'git checkout "NAME"'>
       git cb  "NAME"                <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"             <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
