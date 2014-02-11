@@ -11,6 +11,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git clone url                 <Clone repository found at url>
       git status                    <View changes & staging>
       gitk                          <GUI - show revision tree information>
+      git gui                       <GUI - show revisions, merge branches>
       git remote -v                 <Look at all remote data sources (URLs)>
       git add FILENAME              <Add new file called FILENAME>
       git remove FILENAME           <Remove existing file called FILENAME>
