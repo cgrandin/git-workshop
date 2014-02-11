@@ -25,6 +25,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git branch -D NAME            <Forcibly delete the branch called NAME>
       git log branchA ^branchB      <show log of commits in branchA but not in branchB>
       git log master ^origin/master <Show difference between local master and origin/master (GitHub)>
+      git push origin --delete NAME <Delete the branch NAME from the remote>
 
 ## Useful Git aliases
       git r                         <View remote URLs for the project, same as 'git remote -v'>
