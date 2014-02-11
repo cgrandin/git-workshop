@@ -41,6 +41,11 @@
   return(shade)
 }
 
+getRGB <- function(){
+  return(NULL)
+}
+
+
 curfnfinder <- function(skipframes=0, skipnames="(FUN)|(.+apply)|(replicate)",
     retIfNone="Not in function", retStack=FALSE, extraPrefPerLevel="\t")
 {
