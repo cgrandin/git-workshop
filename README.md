@@ -45,6 +45,7 @@ git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
       git lg                        <Show merge structure in a colored format>
       git lds                       <Show one-line commits in a colored format>
       git ld                        <Show one-line commits with reletive times in a colored format>
+      git wdiff                     <Highlight individual words when diffing, same as 'idiff --word-diff=plain'>
 
 There are many online resources for GIT and most of them can be found at: http://git-scm.com/documentation
 
