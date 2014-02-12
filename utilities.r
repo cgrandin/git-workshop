@@ -41,8 +41,20 @@ getShade <- function(color,opacity){
   return(shade)
 }
 
-getRGB <- function(value){
-  return(col2rgb(value)/255)
+getShadeExample <- function(func={function(x) dbeta(x,7,2)},
+                            col="blue",
+                            opacity=30,
+                            shade=getShade(col,opacity),
+                            ...
+                            ){
+  # An example of how getShade and getCurrFunc() works
+  # Set col to be an R color and opacity to a number between 1 and 99
+  cat0(getCurrFunc(),"getShade() returned ",shade)
+  out   <- curve(func, ...)
+  z     <- NULL
+  z$x   <- out$x[c(1,1:length(out$x),length(out$x))]
+  z$y   <- c(0,out$y,0)
+  polygon(z,col=shade,border=col,lwd=2)
 }
 
 curfnfinder <- function(skipframes=0,
@@ -84,22 +96,6 @@ getCurrFunc <- function(){
 
 cat0 <- function(...){
   cat(..., "\n", sep="")
-}
-
-getShadeExample <- function(func={function(x) dbeta(x,7,2)},
-                            col="blue",
-                            opacity=30,
-                            shade=getShade(col,opacity),
-                            ...
-                            ){
-  # An example of how getShade and getCurrFunc() works
-  # Set col to be an R color and opacity to a number between 1 and 99
-  cat0(getCurrFunc(),"getShade() returned ",shade)
-  out   <- curve(func, ...)
-  z     <- NULL
-  z$x   <- out$x[c(1,1:length(out$x),length(out$x))]
-  z$y   <- c(0,out$y,0)
-  polygon(z,col=shade,border=col,lwd=2)
 }
 
 getShadeExample(func={function(x) dnorm(x,0,0.25)},from=-1,to=1, lwd=2, col="red", yaxp=c(0,3,30))
