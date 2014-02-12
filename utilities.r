@@ -1,7 +1,7 @@
-.getShade <- function(color,opacity){
+getShade <- function(color,opacity){
   # If color is a single R color string or single number,
   #  returns an rgb string of the specified color and opacity
-  # If color is a vector of cR color strings or numbers,
+  # If color is a vector of R color strings or numbers,
   #  returns a vector of rgb strings of the specified color and opacity.
   # If the opacity argument is non-integer or not between 0 and 99, NULL will be returned.
   # - opacity - 2-decimal-digit string (00-99), i.e. "20" means 20%
@@ -45,48 +45,31 @@ getRGB <- function(value){
   return(col2rgb(value)/255)
 }
 
-curfnfinder <- function(skipframes=0, skipnames="(FUN)|(.+apply)|(replicate)",
-    retIfNone="Not in function", retStack=FALSE, extraPrefPerLevel="\t")
-{
+curfnfinder <- function(skipframes=0,
+                        skipnames="(FUN)|(.+apply)|(replicate)",
+                        retIfNone="Not in function",
+                        retStack=FALSE,
+                        extraPrefPerLevel="\t"){
   # Get the current function name from within the function itself.
   # Used to prepend the function name to all messages so that the
   # user knows where the message came from.
-    prefix<-sapply(3 + skipframes+1:sys.nframe(), function(i){
-            currv<-sys.call(sys.parent(n=i))[[1]]
-            return(currv)
-        })
-    prefix[grep(skipnames, prefix)] <- NULL
-    prefix<-gsub("function \\(.*", "do.call", prefix)
-    if(length(prefix)==0)
-    {
-        return(retIfNone)
+  prefix <- sapply(3 + skipframes+1:sys.nframe(), function(i){
+    currv <- sys.call(sys.parent(n=i))[[1]]
+    return(currv)
+  })
+  prefix[grep(skipnames, prefix)] <- NULL
+  prefix <- gsub("function \\(.*", "do.call", prefix)
+  if(length(prefix)==0){
+    return(retIfNone)
+  }else if(retStack){
+    return(paste(rev(prefix), collapse = "|"))
+  }else{
+    retval <- as.character(unlist(prefix[1]))
+    if(length(prefix) > 1){
+      retval <- paste0(paste(rep(extraPrefPerLevel, length(prefix) - 1), collapse=""), retval)
     }
-    else if(retStack)
-    {
-        return(paste(rev(prefix), collapse = "|"))
-    }
-    else
-    {
-        retval<-as.character(unlist(prefix[1]))
-        if(length(prefix) > 1)
-        {
-            retval<-paste(paste(rep(extraPrefPerLevel, length(prefix) - 1), collapse=""), retval, sep="")
-        }
-        return(retval)
-    }
-}
-
-catw <- function(..., file = "", sep = " ", fill = FALSE, labels = NULL,
-    append = FALSE, prefix=0)
-{
-  # writes out some innformation on the calling function to screen
-    if(is.numeric(prefix))
-    {
-        prefix<-curfnfinder(skipframes=prefix+1) #note: the +1 is there to avoid returning catw itself
-        prefix<-paste(prefix, ": ", sep="")
-    }
-    cat(prefix, ..., format(Sys.time(), "(%Y-%m-%d %H:%M:%S)"), "\n",
-        file = file, sep = sep, fill = fill, labels = labels, append = append)
+    return(retval)
+  }
 }
 
 getCurrFunc <- function(){
@@ -95,6 +78,35 @@ getCurrFunc <- function(){
   # Strip extraneous whitespace
   funcName <- gsub("\t+","",funcName)
   funcName <- gsub("\ +","",funcName)
-  funcName <- paste(funcName,": ",sep="")
+  funcName <- paste0(funcName,": ")
   return(funcName)
 }
+
+cat0 <- function(...){
+  cat(..., "\n", sep="")
+}
+
+getShadeExample <- function(func={function(x) dbeta(x,7,2)},
+                            col="blue",
+                            opacity=30,
+                            shade=getShade(col,opacity),
+                            ...
+                            ){
+  # An example of how getShade and getCurrFunc() works
+  # Set col to be an R color and opacity to a number between 1 and 99
+  cat0(getCurrFunc(),"getShade() returned ",shade)
+  out   <- curve(func, ...)
+  z     <- NULL
+  z$x   <- out$x[c(1,1:length(out$x),length(out$x))]
+  z$y   <- c(0,out$y,0)
+  polygon(z,col=shade,border=col,lwd=2)
+}
+
+getShadeExample(func={function(x) dnorm(x,0,0.25)},from=-1,to=1, lwd=2, col="red", yaxp=c(0,3,30))
+getShadeExample(func={function(x) dchisq(x,100,df=10)},
+                from=0,
+                to=20,
+                lwd=2,
+                col="black",
+                shade=getShade("green",opacity=20),
+                yaxp=c(0,3,30))
