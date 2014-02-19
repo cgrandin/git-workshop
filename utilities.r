@@ -1,4 +1,4 @@
-getShade <- function(color,opacity){
+getShade <- function(color, opacity){
   # If color is a single R color string or single number,
   #  returns an rgb string of the specified color and opacity
   # If color is a vector of R color strings or numbers,
@@ -11,9 +11,9 @@ getShade <- function(color,opacity){
   #        BB=blue, a 2-hexadecimal-digit string
   #        AA=alpha or opacity
   #
-  # The opacity agrument is scalar and will be applied to all colors.
+  # The opacity argument is scalar and will be applied to all colors.
   if(!(opacity %% 1 == 0) || opacity<0 || opacity>99){
-    cat(getCurrFunc(),"opacity argument must be an integer between 0 and 99.\n",sep="")
+    cat0(getCurrFunc(),"opacity argument must be an integer between 0 and 99.\n")
     return(NULL)
   }
   colorDEC <- col2rgb(color)
