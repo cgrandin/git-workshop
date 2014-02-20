@@ -1,0 +1,1313 @@
+\documentclass[twocolumn]{article} % default is 10 pt
+\usepackage{graphicx} % needed for including graphics e.g. EPS, PS
+% This is a comment!
+
+%\usepackage{epstopdf}
+%\DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+%\pdfcompresslevel=9
+
+\usepackage{lscape}
+\usepackage{fancyvrb}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{chngpage}
+\usepackage{hyperref}
+
+\DeclareGraphicsExtensions{.pdf}
+\long\def\comment#1{}
+
+% uncomment if don't want page numbers
+% \pagestyle{empty}
+
+%set dimensions of columns, gap between columns, and paragraph indent 
+\setlength{\textheight}{8.75in}
+\setlength{\columnsep}{0.375in}
+\setlength{\textwidth}{6.8in}
+\setlength{\topmargin}{0.0625in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+\setlength{\oddsidemargin}{-.19in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.12in}
+\makeatletter
+\def\@normalsize{\@setsize\normalsize{10pt}\xpt\@xpt
+\abovedisplayskip 10pt plus2pt minus5pt\belowdisplayskip 
+\abovedisplayskip \abovedisplayshortskip \z@ 
+plus3pt\belowdisplayshortskip 6pt plus3pt 
+minus3pt\let\@listi\@listI}
+
+% NEED Superscript and subscript in text mode...
+\newcommand{\super}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\sub}[1]{\ensuremath{_{\textrm{#1}}}}
+\newcommand{\sth}[0]{\super{th}}
+\newcommand{\sst}[0]{\super{st}}
+\newcommand{\snd}[0]{\super{nd}}
+\newcommand{\srd}[0]{\super{rd}}
+
+% provides scientific notation.  Us it like this:
+% 3.2\e{-10} m  will give you: 3.2×10-10 m.
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+%need an 11 pt font size for subsection and abstract headings 
+\def\subsize{\@setsize\subsize{12pt}\xipt\@xipt}
+%make section titles bold and 12 point, 2 blank lines before, 1 after
+\def\section{\@startsection {section}{1}{\z@}{1.0ex plus
+1ex minus .2ex}{.2ex plus .2ex}{\large\bf}}
+%make subsection titles bold and 11 point, 1 blank line before, 1 after
+\def\subsection{\@startsection 
+   {subsection}{2}{\z@}{.2ex plus 1ex} {.2ex plus .2ex}{\subsize\bf}}
+
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>  Make DRAFT watermark appear on every page <<<<<<<<<<<<<<<<<<<
+% Comment out this whole section to remove DRAFT watermark
+\usepackage{graphicx,type1cm,eso-pic,color}
+\makeatletter
+          \AddToShipoutPicture{%
+            \setlength{\@tempdimb}{.5\paperwidth}%
+            \setlength{\@tempdimc}{.5\paperheight}%
+            \setlength{\unitlength}{1pt}%
+            \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+        \makebox(0,0){\rotatebox{55}{\textcolor[gray]{0.85}%
+        {\fontsize{5cm}{5cm}\selectfont{DRAFT}}}}%
+            }%
+        }
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>  Make DRAFT watermark appear on every page <<<<<<<<<<<<<<<<<<<
+\makeatother
+
+\begin{document}
+
+% if you don't want the date printed, uncomment the next line
+%\date{}
+
+% >>>>>>>>>>>>>>>>>>>>>>>  Put your title here <<<<<<<<<<<<<<<<<<<<<<<<
+% make title bold and 14 pt font (Latex default is non-bold, 16pt) 
+\title{\Large {\bf An Example of A Latex Document}}
+
+% >>>>>>>>>>>>>>>>>>>>>>> Author's Names, Thanks or Affliation <<<<<<<<
+\author{C. Grandin
+}
+
+\maketitle
+\thispagestyle{empty}
+
+\subsection*{\centering Abstract}
+% >>>>>>>>>>>>>>>>>>>>>>>>> Keywords and Abstract <<<<<<<<<<<<<<<<<<<<<
+{\em Keywords: 
+  Latex, Git
+
+  This document is an example of what Git and Latex can do. The two can be used together to track changes to a document.
+}
+
+%\section*{Introduction \Left\Homer}
+\section*{Introduction}
+{\it Git} version control and {\it Latex} typesetting software can be use together to collaborate on documents and track changes.
+
+The length-weight relationship for both Pacific Hake were determined by using AD Model builder software ({\it ADMB}) \cite{ADMB}
+to fit a simple 2-parameter nonlinear model ({\it Program \ref{lwcode}}) to the length-weight data acquired from sampling of the
+midwater trawls for each species.
+The minimization took place on the squared difference of the predicted weights and the actual weights according to the formula:
+\\
+\begin{equation}\label{EQnorm2}
+z=\sum_{i}(wpred_i-w_i)^2
+\end{equation}
+\\
+where {\it wpred} are the predicted weights and {\it w} are the actual weights.\\
+The data came from 11 trawls. A Monte Carlo Markov Chain (MCMC) with a chain length of 10,000
+was executed for the models and convergence was good for both species.  The length-weight relationship is defined as:
+\\
+\begin{equation}\label{EQlengthweight}
+ \omega=\alpha \ell^{\beta}
+\end{equation}
+\\
+
+The values of $\alpha$ and $\beta$ were found to be 0.0034219 and 3.16862 respectively.
+Figure \ref{HakeLW} shows the data and model for Hake. 
+The corresponding equations are:
+
+\\
+\begin{equation}\label{LWHake}
+w = 0.0034219 \ell^{3.16862}
+\end{equation}
+\\
+
+Length-at-age was also examined for Pacific Hake, in a similar fashion as the length-weight relationship.  The code for this growth model can be found in {\it Program \ref{lacode}}.  The minimization took place on the squared difference of the predicted lengths and the observed lengths according to the formula:
+\\
+\begin{equation}\label{LAnorm2}
+z=\sum_{i}(\ell pred_i-\ell_i)^2
+\end{equation}
+\\
+for the Von Bertalanffy relationship:
+\\
+\begin{equation}\label{VonB}
+L_t = L_\infty (1 - e^{(-kt)})
+\end{equation}
+\\
+where $L_\infty$ is the asymptotic maximum fork length, $k$ is the growth coefficient, and $L_t$ is the fork length at time t, the age in years. 
+For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 0.410165 respectively.  Figure \ref{HakeLA} shows this relationship along with the associated data points used in the minimization.
+
+\section*{Target strength}
+This survey made use of a relatively new piece of equipment called the Drop Acoustic Information SYstem (DAISY).  The system consists of a pressure hull canister containing two transducers, a 38kHz and 120kHz, a serial-to-ethernet adapter (nport) and webrelay server software which allows control of the nport converter using HTML client software such as a web browser.  The entire unit is tethered and lowered to a maximum depth of 150m, thus avoiding surface noise.  The {\it C.C.G.S. W.E. Ricker} has a variable pitch propeller, which means that the propellor shaft is rotating at all times so the DAISY is ideal in this case to avoid noise caused by propeller cavitation.  Also the transducers are closer to the species of interest, increasing precision of the target strength measurement.  DAISY is controlled from the surface, by ethernet (cat5) cable and a standard PC running a web browser.
+
+An attempt to gather Pacific Hake target strength data with the DAISY was made on this survey, but the required personnel were only on board for the first leg of the trip, during which time only Walleye Pollock were present.  Since no target strength data for Pacific Hake in the Strait of Georgia are available, the target strength for Pacific Hake in the strait was assumed to be the same as that of the offshore stock.  The target strength data collected for Pollock on this survey has yet to be analyzed and therefore are not used in the abundance and biomass estimation calculations presented in this paper.\\
+
+  
+The target strength-length relationship for any given pelagic species was first derived in {\it Foote, 1987} \cite{FooteTSHake} and is of the general form:\\
+\\
+\begin{equation}\label{EQgeneralTS}
+TS_n = 20 log_{10} \ell + c
+\end{equation}
+\\
+
+where $TS_n$ is the target strength per fish in decibels (dB) and $\ell$ is the length of the fish in centimeters. $c$ is a constant that varies by species insonified.
+
+{\it Traynor, 1996} \cite{Traynor96} gives the regression relation in its logarithmic form between target strength and backscattering cross section as:
+\\
+\begin{equation}\label{TSSigma}
+TS_{dB} = 10 log_{10} \sigma_{bs} = 20 log_{10} \ell + c
+\end{equation}
+\\
+which, when solved for $\sigma_{bs}$,  gives a linear regression relation between backscatter cross section and fish length squared:
+\\
+\begin{equation}\label{LengthSigma}
+\sigma_{bs} = \ell^2 10^{\frac{c}{10}}
+\end{equation}
+\\
+
+%and the relationship between target strength per fish ($TS_N$) and target strength per unit weight ($TS_w$), in dB/kg:\\
+%\\
+%\begin{equation}\label{EQTSnTSw}
+%TS_n = TS_w0 - log(\frac{w}{1000})
+%\end{equation}
+%\\
+%To estimate biomass, equations \ref{EQlengthweight}, \ref{EQgeneralTS}, and \ref{EQTSnTSw} are combined as in {\it Kieser et al., 1998} \cite{Kieser98} yielding:
+%\\
+%\begin{equation}\label{EQTSw}
+%TS_w(\ell) = ( 20 - 10 \beta) log \ell  + (c - 10 log(\frac{\alpha}{1000}))
+%\end{equation}
+%\\
+
+Target strength for Walleye Pollock was taken from {\it Foote and Traynor, 1988} \cite{FooteTSPollock} which gives the length-TS relationship as:
+\\
+\begin{equation}\label{EQPollockTS}
+TS_n = 20 log_{10} \ell - 66.0
+\end{equation}
+\\
+
+The length-TS relationship for Pacific Hake was taken from {\it Kieser et al., 1998} \cite{Kieser98}, {\it Fleischer et al., 2008} \cite{2005Survey}, and {\it deBlois et al., 2009} \cite{2007Survey}:
+\\
+\begin{equation}\label{EQHakeTS}
+TS_n = 20 log_{10} \ell - 68.0
+\end{equation}
+\\
+
+\section*{Abundance and Biomass Estimates}
+The abundance and biomass estimation procedure is identical for both Walleye Pollock and Pacific Hake.  The method is similar to that applied in {\it Fleischer et al., 2008} \cite{2005Survey} and {\it deBlois et al., 2009} \cite{2007Survey}.  For Pollock, the expected backscattering cross section is calculated using equation \ref{LengthSigma} and the value of $c$ from equation \ref{EQPollockTS}:
+\\
+\begin{equation}\label{PollockBackscatterCrossSection}
+\sigma_{bs} = \frac{\ell^2}{10^{6.6}}
+\end{equation}
+\\
+
+For Hake, the expected backscattering cross section is calculated using equation \ref{LengthSigma} and the value of $c$ from equation \ref{EQHakeTS}:
+\\
+\begin{equation}\label{HakeBackscatterCrossSection}
+\sigma_{bs} = \frac{\ell^2}{10^{6.8}}
+\end{equation}
+\\
+
+For this survey, the length of Pollock in all sets in which Pollock were caught formed an approximately bimodal length distribution (Figure \ref{PollockLengthDist}) with means of 25.5 cm and 33.5 cm, which from equation \ref{PollockBackscatterCrossSection}, gives backscatter cross sections of $\sigma_{bs} = 1.633354\e{-4} cm^2$ and $\sigma_{bs} = 2.818965\e{-4} cm^2$ respectively. Pacific Hake also formed a bimodal length distribution (Figure \ref{HakeLengthDist}), with mean lengths of 15.0 cm and 31.5 cm, which from equation \ref{HakeBackscatterCrossSection}, gives backscatter cross sections of $\sigma_{bs} = 3.56601\e{-5} cm^2$ and $\sigma_{bs} = 1.57261\e{-4} cm^2$ respectively. 
+
+The number of individuals ($\hat{N}$) and biomass ($\hat{B}$) are given by the following two equations which are similar to those found in {\it Fleischer et al., 2008} \cite{2005Survey} and {\it deBlois et al., 2009} \cite{2007Survey}:
+\\
+\begin{equation}\label{Numbers}
+\hat{N} = \sum_{\ell}\sum_{i}\frac{s_{A_i}A_iP_{i\ell}}{4\pi\sigma_{bs_\ell}}
+\end{equation}
+\\
+\begin{equation}\label{Biomass}
+\hat{B} = \sum_{\ell}\sum_{i}\frac{s_{A_i}\hat{W}_{\ell}A_iP_{i\ell}}{4\pi\sigma_{bs_\ell}}
+\end{equation}
+\\
+
+Where $\ell$ is the length class, $i$ is the aggregation, $s_{A_i}$ is the Nautical Acoustic Scattering Coefficient (NASC) for the aggregation.  $\hat{W}_\ell$ is the mean weight in kilograms for the given length class, $P_{i\ell}$ is the proportion of the sample attributed to aggregation $i$ for the length class $\ell$ (see table \ref{BimodalProportions} for these proportion calculations), $\sigma_{bs_\ell}$ is the acoustic backscatter cross-section for the length class (calculated from equations \ref{PollockBackscatterCrossSection} and \ref{HakeBackscatterCrossSection}), $A_i$ represents the area of each echo-integration interval, or aggregation, which includes a linear areal interpolation factor of 3 nmi, since the transect lines are 3 nmi apart.  This implies a 1.5 nmi interpolation on either side of each seen aggregation.  In some cases, aggregations were constrained by land (Jervis Inlet), and in other cases transects were run at a spacing of 2 nmi (Pollock spawning grid and Malaspina Strait).  These aggregations were interpolated at a smaller value, which can be seen in the {\it Width} column of tables \ref{PollockBiomassEstimates} and \ref{HakeBiomassEstimates}.  The values used in Jervis inlet were determined by manual measurement in the Geographic Information System software {\it ArcGIS}.  
+
+There are two length classes for each species, with associated mean weights of 117.6 grams and 272.4 grams for Pollock (figure \ref{PollockLW} and equation \ref{LWPollock}) and 18.2 grams and 191.4 grams for Hake (figure \ref{HakeLW} and equation \ref{LWHake}). 
+
+The abundance and biomass estimates for Pollock are given in table \ref{PollockBiomassEstimates}, and total approximately 79,849,008 individuals or 17,811 metric tonnes.  The abundance and biomass estimates for Hake are given in table \ref{HakeBiomassEstimates}, and total approximately 101,177,841 individuals or 12,325 mt.  The larger number of Hake individuals having smaller biomass than that of Pollock can be attributed to a large number of them being in the smaller length class, or juveniles, each weighing only approximately 18 grams.
+
+Figures \ref{PollockOverallSpatial} and \ref{PollockJuvenileAdult} show the spatial distributions of the Pollock biomass split into the two length classes, blue for mean length 25.5 cm and red for mean length 33.5cm.  The bars in figure \ref{PollockOverallSpatial} when summed give the total Pollock biomass for the Strait of Georgia; it is clear that most of the biomass was found in an area South of Bowen Island.  Figure \ref{PollockJuvenileAdult} shows the proportions of each length class by aggregation, normalized by total biomass for the aggregation.   From this figure, it is clear that the southern part of the Strait of Georgia contains a roughly equal split between the two length classes, with larger Pollock found in low abundance in the Northern part of the Strait.
+
+Figures \ref{HakeOverallSpatial} and \ref{HakeJuvenileAdult} show the spatial distributions of the Hake biomass.  The length classes for Hake have means of 15.0 cm and 31.5 cm.  At a mean length of 15.0 cm and weighing only 18.2 grams, the smaller hake length class can be called juveniles.  Interestingly, there were no Hake found south of Nanaimo, and those found in the Northern part of the strait, near Hernando and Savary Islands were mostly adults.  Jervis Inlet contained low densities of Hake, but the length distribution of those in the inlet was similar to that of Malaspina Strait.  Juveniles were found North of Nanaimo, through Malaspina Strait, and into Jervis Inlet.
+
+Previous biomass estimates of Hake for the Strait of Georgia found in {\it Kieser, et al} \cite{KieserBiomassReview} have been calculated using a slightly different spatial scheme, in which a spatial matrix of 60 meter x 60 meter cells is created and populated with the nearest $S_a$ value, then interpolated and clipped by a bathymetric mask limiting to 50m depth.  The linear areal interpolation method used in this paper is equivalent, but not identical to the method implemented in {\it Kieser et al.}  Also in this analysis the length distibution is broken into two classes based on sampling and the proportions of each are multiplied by the NASC recorded on the acoustics for the nearest aggregation.  In {\it Kieser et al.}, two layers at different depths seen on the acoustics were assigned different target strength values to reflect the different lengths of fish in those layers (juveniles tend aggregate shallower).  The 2011 survey did not see this layering in the acoustic echograms and therefore a different method had to be implemented to address the bimodality in the length distributions, and their corresponding difference in target strength.  The 1998 estimate of biomass for Hake in the Strait was calculated to be 33,681 mt ({\it Kieser et al., 1998} \cite{KieserBiomassReview}).
+
+\begin{thebibliography}{99}
+
+\bibitem{FisheriesAcoustics} Simmonds, J., and MacLennan, D.,
+{\it Fisheries Acoustics Theory and Practice Second Ed. 
+Fisheries and Aquatic Resources Series 10, Blackwell Science Ltd, 2005.
+}
+
+\bibitem{2005Survey} Fleischer, G.W., Cooke, K.D., Ressler, P.H., Thomas, R.E., de Blois, S.K., Hufnagle, L.C.,
+{\it The 2005 Integrated Acoustic and Trawl Survey of Pacific hake, Merluccius Productus, in U.S. and Canadian Waters off the
+Pacific Coast,
+U.S. Dept. Commer., NOAA Tech. Memo.,NMFS-NWFSC-94, 41 p, 2008.
+}
+
+\bibitem{2007Survey} de Blois, S.K.D., Chu, D., and Cooke, K.D.
+{\it Results of the 2007 Integrated Acoustic and Trawl Survey of Pacific Hake (Merluccius productus) in
+U.S. and Canadian Waters off the Pacific Coast
+NWFSC Processed Rep. 2009-xx, 70 p, 2009.
+}
+
+\bibitem{Taylor} Taylor, F.H.C., Kieser, R.,
+{\it Hydroacoustic and Fishing Surveys for Walleye Pollock ({\it Theregra Chalcogramma}) in Dixon Entrance and Northern Hecate Strait, January 22 - February 9, 1979,
+Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1624, February 1981.
+}
+
+\bibitem{TaylorHerring} Taylor, F.H.C., Kieser, R.,
+{\it Distribution and Abundance of Herring and Other Pelagic Fish Off the West Coast of Vancouver Island in September, November 1980, and March 1981, and in the Strait of Georgia in November 1980,
+Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1682, December 1982.
+}
+%\cofeA{0.075}{0.7}{253}
+
+\bibitem{Kieser81} Kieser, R.,
+{\it Hydroacoustic Biomass Estimates of Bathypelagic Groundfish in Georgia Strait, January, February, and April, 1981,
+Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1715, August 1983.
+}
+
+\bibitem{Thompson} Thompson, J.M., McFarlane, G.A.,
+{\it Distribution and Abundance of Pacific Hake and Walleye Pollock in the Strait of Georgia, March 24 - May 2, 1981,
+Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1661, May 1982.
+}
+
+\bibitem{Traynor96} Traynor, J.J., 
+{\it Target Strength Measurements of Walleye Pollock ({\it Theregra Chalcogramma}) and Pacific Whiting {\it Merluccius Productus},
+ICES J. Mar. Sci. 53:253-258, 1996.
+}
+
+\bibitem{Kieser98} Kieser, R., Cooke, K., Andrews, B., McFarlane, S., Smith, S.,
+{\it A Hydroacoustic Survey of Pacific Hake in the Strait of Georgia, British Columbia, Canada, February 20 - March 5, 1996,
+Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 2456, 1998.
+}
+
+\bibitem{KieserBiomassReview} Kieser, R., Saunders, M.W., Cooke, K.,
+{\it Review of Hydroacoustic Methodology and Pacific Hake Biomass Estimates for the Strait of Georgia, 1981 to 1998,
+Canadian Stock Assessment Secretariat, Resesarch Document 99/15, 1999.
+}
+
+\bibitem{FooteTSHake} Foote, K.G., 
+{\it Fish Target Strengths For Use in Echo Integrator Surveys, 
+J. Acoust. Soc. Am. 82(3), September 1987
+}
+
+\bibitem{FooteTSPollock} Foote, K.G.,
+{\it Comparison of Walleye Pollock Target Strength Estimates Determined From in situ Measurements and Calculations Based on Swimbladder Form,
+J. Acoust. Soc. Am., 83(1), January 1988.
+}
+
+\bibitem{ADMB} Otter Research, 
+{\it An Introduction to AD Model Builder for use in Nonlinear Modeling and Statistics,
+Otter Research Ltd., Nanaimo, B.C., Canada, 1994.
+}
+
+\bibitem{Density} Silverman, B.W.,
+{\it Density Estimation,
+Chapman and Hall, 1986, ISBN 9780412246203.
+}
+
+\end{thebibliography}
+
+\clearpage
+\newfloat{program}{h}{l}
+\floatname{program}{Program}
+\begin{program}
+  \VerbatimInput[baselinestretch=1,fontsize=\footnotesize,numbers=left]{../hake-lengthweight-model/lengthweight.tpl}
+  \caption{ADMB \cite{ADMB} TPL code for length-weight relationship model.}
+  \label{lwcode}
+\end{program}
+
+\clearpage
+\newfloat{program}{h}{l}
+\floatname{program}{Program}
+\begin{program}
+  \VerbatimInput[baselinestretch=1,fontsize=\footnotesize,numbers=left]{../hake-lengthweight-model/vonb.tpl}
+  \caption{ADMB \cite{ADMB} TPL code for length-age growth model.}
+  \label{lacode}
+\end{program}
+
+\clearpage
+\begin{table*}
+\begin{center}
+{\small
+\begin{tabular}{ | c | c | c | c | c | }
+  \hline
+  & {\bf System gain} & {\bf Sys $S_a$ correction} & {\bf Calc TS gain} & {\bf Calc $S_a$ correction} \\ \hline
+\hline
+  38 kHz & 25.14 & -0.63 & 25.05 & -0.45 \\ \hline
+  120 kHz & 25.00 & -0.39 & 24.52 & -0.30 \\ \hline
+  38 kHz - DAISY & 23.92 & -0.59 & 24.41 & -0.60 \\ \hline
+  120 kHz - DAISY & 22.71 & -0.47 & 24.78 & -0.70 \\ \hline
+\end{tabular}
+    \caption{Results of the March 15, 2011 calibration of the ship mounted transducers and the March 16, 2011 calibration of the
+      transducers on the DAISY unit.  System gain and $s_a$ correction values were those in the system prior to calibration. Calculated TS gain and $s_a$ correction values were those input into the system after calibration.
+    }
+    \label{Calibration}
+}
+\end{center}
+\end{table*}
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Species} & {\bf Science Name} & {\bf Weight (kg)}\\ \hline \hline
+\multirow{10}{*}1
+ & EULACHON & THALEICHTHYS PACIFICUS & 2.29\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 2.02\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.17\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.05\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.05\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 0.01\\ 
+ & SIDESTRIPE SHRIMP & PANDALOPSIS DISPAR & 0.01\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.01\\ 
+ & SCULPINS & COTTIDAE & 0.01\\ 
+ & SQUIDS & CHIROTEUTHIDAE & 0.01\\ \hline
+\multirow{15}{*}2
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 455.11\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 17.67\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 7.40\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 3.43\\ 
+ & PACIFIC COD & GADUS MACROCEPHALUS & 2.71\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.58\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.22\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.21\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.14\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.11\\ 
+ & SQUIDS & GONATUS & 0.08\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.05\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\ 
+ & TADPOLE SNAILFISH & NECTOLIPARIS PELAGICUS & 0.01\\ 
+ & COPEPODS & COPEPODA & 0.01\\ 
+ & SALP & CYCLOSALPA AFFINIS & 0.01\\  \hline
+\multirow{9}{*}3
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 107.92\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 3.46\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.50\\
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.42\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.12\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.12\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 0.01\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.01\\ 
+ & SQUIDS & GONATUS & 0.01\\ \hline
+\multirow{12}{*}4
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 153.94\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 63.68\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 20.22\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 5.10\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 4.06\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 2.88\\ 
+ & SPOTTED RATFISH & HYDROLAGUS COLLIEI & 1.20\\ 
+ & PACIFIC COD & GADUS MACROCEPHALUS & 1.16\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.68\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.68\\  
+ & CHINOOK SALMON & ONCORHYNCHUS TSHAWYTSCHA & 0.52\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.44\\  \hline
+\multirow{9}{*}5
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 56.5\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 15.84\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 3.76\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 1.10\\ 
+ & LONGNOSE SKATE & RAJA RHINA & 0.31\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.22\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.16\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 0.07\\ 
+ & SQUIDS & GONATUS & 0.06\\ \hline
+\multirow{10}{*}6
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 211.29\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.14\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.50\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 0.32\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 0.30\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.14\\ 
+ & SQUIDS & TEUTHIDA & 0.10\\  
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.08\\ 
+ & LANTERNFISHES & MYCTOPHIDAE & 0.04\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.02\\ \hline
+\multirow{10}{*}7
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 130.52\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 2.00\\ 
+ & ENGLISH SOLE & PAROPHRYS VETULUS & 0.44\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.22\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 0.16\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 0.12\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.11\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.05\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 0.01\\ 
+ & SQUIDS & GONATUS & 0.01\\  \hline
+\multirow{9}{*}8
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 211.47\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 14.12\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 1.08\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.68\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.18\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 0.07\\ 
+ & SQUIDS & GONATUS & 0.04\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.01\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.01\\  \hline
+\end{tabular}
+  \caption{Catch composition for sets 1-8.}
+    \label{CatchComp1-8}
+}
+\end{center}
+\end{table*}
+
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Species} & {\bf Science Name} & {\bf Weight (kg)}\\ \hline \hline
+\multirow{13}{*}9
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 71.5\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 18.49\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 10.76\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 8.38\\ 
+ & EULACHON & THALEICHTHYS PACIFICUS & 4.00\\ 
+ & PACIFIC COD & GADUS MACROCEPHALUS & 2.24\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 1.34\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.56\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.46\\ 
+ & SQUIDS & GONATUS & 0.14\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.08\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.08\\ 
+ & LAMPREYS & PETROMYZONTIDAE & 0.01\\  \hline
+\multirow{12}{*}{10}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 94.69\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 25.51\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 4.74\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 1.80\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 1.46\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 0.74\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.67\\ 
+ & NORTHERN ANCHOVY & ENGRAULIS MORDAX & 0.11\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.09\\ 
+ & SQUIDS & TEUTHIDA & 0.02\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.02\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\  \hline
+\multirow{6}{*}{11}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 80.64\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 6.04\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.38\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.28\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.20\\ 
+ & SQUIDS & GONATUS & 0.18\\  \hline
+\multirow{13}{*}{12}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 52.36\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 13.10\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 1.14\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 1.06\\ 
+ & CHINOOK SALMON & ONCORHYNCHUS TSHAWYTSCHA & 0.70\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.54\\ 
+ & SQUIDS & GONATUS & 0.3\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.22\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.18\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.01\\ 
+ & PINK SHRIMP & PANDALUS BOREALIS & 0.01\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.01\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\  \hline
+\multirow{9}{*}{13}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 33.1\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 12.30\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 4.34\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.99\\ 
+ & SQUIDS & GONATUS & 0.20\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.16\\
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.14\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.06\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.05\\ \hline
+\multirow{10}{*}{14}
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 410.39\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 127.84\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 116.09\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 2.16\\ 
+ & BROWN CAT SHARK & APRISTURUS BRUNNEUS & 0.98\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.04\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.02\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.02\\ 
+ & SQUIDS & GONATUS & 0.01\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\  \hline
+\multirow{4}{*}{15}
+ & PACIFIC HERRING & CLUPEA PALLASII & 114.68\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 65.68\\
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 1.00\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 0.78\\   \hline
+\multirow{13}{*}{16}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 146.44\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 95.42\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 78.48\\ 
+ & BROWN CAT SHARK & APRISTURUS BRUNNEUS & 3.04\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 2.50\\ 
+ & CHINOOK SALMON & ONCORHYNCHUS TSHAWYTSCHA & 1.92\\ 
+ & SQUIDS & GONATUS & 0.44\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.28\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.26\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.23\\ 
+ & SIDESTRIPE SHRIMP & PANDALOPSIS DISPAR & 0.02\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.02\\ 
+ & TADPOLE SCULPIN & PSYCHROLUTES PARADOXUS & 0.01\\  \hline
+\end{tabular}
+  \caption{Catch composition for sets 9-16.}
+    \label{CatchComp9-16}
+}
+\end{center}
+\end{table*}
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Species} & {\bf Science Name} & {\bf Weight (kg)}\\ \hline \hline
+\multirow{13}{*}{17}
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 182.35\\ 
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 63.28\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 40.94\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 33.01\\ 
+ & LANTERNFISH & TARLETONBEANIA & 8.71\\
+ & BROWN CAT SHARK & APRISTURUS BRUNNEUS & 1.82\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 1.76\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 1.39\\ 
+ & SQUIDS & GONATUS & 0.44\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.33\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.11\\ 
+ & PALLID EELPOUT & LYCODAPUS MANDIBULARIS & 0.11\\ 
+ & PACIFIC LAMPREY & LAMPETRA TRIDENTATA & 0.01\\ \hline
+\multirow{6}{*}{18}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 38.11\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 1.65\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.01\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.01\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.01\\ 
+ & BLACKFIN SCULPIN & MALACOCOTTUS KINCAIDI & 0.01\\  \hline
+\multirow{4}{*}{19}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 65.65\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 1.39\\
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.45\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.13\\  \hline 
+\multirow{13}{*}{20}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 80.07\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 15.36\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 4.03\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.66\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.62\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.36\\ 
+ & SQUIDS & GONATUS & 0.30\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.28\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.14\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.08\\
+ & SIDESTRIPE SHRIMP & PANDALOPSIS DISPAR & 0.02\\ 
+ & TADPOLE SCULPIN & PSYCHROLUTES PARADOXUS & 0.01\\ 
+ & SALP & CYCLOSALPA AFFINIS & 0.01\\ \hline 
+\multirow{12}{*}{21}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 132.12\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 6.00\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 1.30\\ 
+ & BROWN CAT SHARK & APRISTURUS BRUNNEUS & 1.20\\ 
+ & PLAINFIN MIDSHIPMAN & PORICHTHYS NOTATUS & 0.76\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.16\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.10\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.04\\ 
+ & SQUIDS & GONATUS & 0.02\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.01\\ 
+ & TADPOLE SCULPIN & PSYCHROLUTES PARADOXUS & 0.01\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\  \hline
+\multirow{16}{*}{22}
+ & PACIFIC HAKE & MERLUCCIUS PRODUCTUS & 127.06\\ 
+ & SPINY DOGFISH & SQUALUS ACANTHIAS & 12.00\\ 
+ & WALLEYE POLLOCK & THERAGRA CHALCOGRAMMA & 3.48\\ 
+ & SPLITNOSE ROCKFISH & SEBASTES DIPLOPROA & 1.04\\ 
+ & BROWN CAT SHARK & APRISTURUS BRUNNEUS & 0.74\\ 
+ & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.74\\ 
+ & SCHOOLMASTER GONATE SQUID & BERRYTEUTHIS MAGISTER & 0.60\\ 
+ & SQUIDS & GONATUS & 0.48\\ 
+ & AMERICAN SHAD & ALOSA SAPIDISSIMA & 0.24\\ 
+ & LANTERNFISH & TARLETONBEANIA & 0.14\\ 
+ & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.12\\ 
+ & PACIFIC HERRING & CLUPEA PALLASII & 0.08\\ 
+ & WHITEBAIT SMELT & ALLOSMERUS ELONGATUS & 0.02\\ 
+ & SOFT SCULPIN & PSYCHROLUTES SIGALUTES & 0.01\\ 
+ & TADPOLE SCULPIN & PSYCHROLUTES PARADOXUS & 0.01\\ 
+ & ISOPODS & ISOPODA & 0.01\\ \hline 
+\end{tabular}
+  \caption{Catch composition for sets 17-22.}
+    \label{CatchComp17-22}
+}
+\end{center}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Length(mm)} & {\bf Weight(g)} & {\bf Species} & {\bf Science Name} & {\bf Prey Volume(cc)} & {\bf Digestion State}\\ \hline \hline
+\multirow{8}{*}{10}
+ & 255 & 119 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 3.0  & 1/4 DIGESTED\\
+ & 255 & 117 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 2.0  & 3/4 DIGESTED\\
+ & 295 & 169 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.5  & FRESH\\
+ & 290 & 154 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.0  & 1/4 DIGESTED\\
+ & 145 & 20  & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 0.5  & 1/2 DIGESTED\\
+ & 150 & 22  & UNID. REMAINS         &                       & 0.3  & FULLY DIGESTED\\
+ & 170 & 30  & PINK SHRIMP (SMOOTH)  & PANDALUS JORDANI      & 0.3  & 1/2 DIGESTED\\
+ &     &     &                       &                       &      & 43 specimens empty or everted\\ \hline
+\multirow{6}{*}{11}
+ & 320 & 191 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.5  & FRESH\\
+ & 290 & 167 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/2 DIGESTED\\
+ & 310 & 157 & UNID. REMAINS         &                       & 0.5  & 3/4 DIGESTED\\
+ & 250 & 99  & UNID. REMAINS         &                       & 0.3  & 3/4 DIGESTED\\
+ & 150 & 18  & UNID. REMAINS         &                       & 0.3  & 1/2 DIGESTED\\
+ &     &     &                       &                       &      & 45 specimens empty or everted\\ \hline
+\multirow{10}{*}{12}
+ & 505 & 774 & PACIFIC HAKE          & MERLUCCIUS PRODUCTUS  & 14.0 & FRESH\\
+ & 245 & 83  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/4 DIGESTED\\
+ & 150 & 18  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/4 DIGESTED\\
+ & 130 & 13  & UNID. REMAINS         &                       & 0.8  & 1/2 DIGESTED\\
+ & 245 & 75  & UNID. REMAINS         &                       & 0.8  & 3/4 DIGESTED\\
+ & 280 & 124 & UNID. REMAINS         &                       & 0.5  & 1/2 DIGESTED\\
+ & 170 & 26  & UNID. REMAINS         &                       & 0.5  & FULLY DIGESTED\\
+ & 150 & 18  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 0.3  & 1/2 DIGESTED\\
+ & 290 & 139 & UNID. REMAINS         &                       & 0.1  & FULLY DIGESTED\\
+ &     &     &                       &                       &      & 41 specimens empty or everted\\ \hline
+\multirow{3}{*}{13}
+ & 295 & 164 & UNID.  FISHES         &                       & 2.0  & 3/4 DIGESTED\\
+ & 290 & 137 & UNID.  FISHES         &                       & 1.5  & 3/4 DIGESTED\\
+ &     &     &                       &                       &      & 48 specimens empty or everted\\ \hline
+\multirow{12}{*}{14}
+ & 335 & 233 & PACIFIC HAKE          & MERLUCCIUS PRODUCTUS  & 10.0 & FRESH\\
+ & 370 & 316 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 5.0  & 1/2 DIGESTED\\
+ & 470 & 612 & UNID.  FISHES         &                       & 3.0  & 1/2 DIGESTED\\
+ & 370 & 316 & GONATUS               & GONATUS               & 3.0  & 1/2 DIGESTED\\
+ & 155 & 22  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 2.0  & 1/4 DIGESTED\\
+ & 350 & 275 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/4 DIGESTED\\
+ & 335 & 201 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/2 DIGESTED\\
+ & 145 & 18  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/4 DIGESTED\\
+ & 285 & 132 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/4 DIGESTED\\
+ & 285 & 154 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 0.8  & 3/4 DIGESTED\\
+ & 285 & 141 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 0.5  & 1/4 DIGESTED\\
+ &     &     &                       &                       &      & 39 specimens empty or everted\\ \hline
+\multirow{9}{*}{16}
+ & 375 & 376 & PACIFIC HERRING       & CLUPEA PALLASII       & 40.0 & 1/2 DIGESTED\\
+ & 450 & 601 & PACIFIC HERRING       & CLUPEA PALLASII       & 35.0 & 1/2 DIGESTED\\
+ & 390 & 363 & UNID.  FISHES         &                       & 30.0 & 3/4 DIGESTED\\
+ & 385 & 361 & UNID.  FISHES         &                       & 20.0 & 3/4 DIGESTED\\
+ & 380 & 424 & UNID.  FISHES         &                       & 20.0 & 3/4 DIGESTED\\
+ & 235 & 72  & EUPHAUSIIDS           & EUPHAUSIACEA          & 2.0  & 1/2 DIGESTED\\
+ & 330 & 210 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 2.0  & 1/4 DIGESTED\\
+ & 360 & 275 & UNID. REMAINS         &                       & 0.5  & 3/4 DIGESTED\\
+ &     &     &                       &                       &      & 42 specimens empty or everted\\ \hline
+\multirow{8}{*}{17}
+ & 245 & 95  & EUPHAUSIIDS           & EUPHAUSIACEA          & 2.0  & 1/2 DIGESTED\\
+ & 230 & 78  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 2.0  & 1/2 DIGESTED\\
+ & 220 & 68  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/2 DIGESTED\\
+ & 250 & 87  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 1/2 DIGESTED\\
+ & 220 & 56  & UNID. REMAINS         &                       & 0.5  & 3/4 DIGESTED\\
+ & 240 & 79  & UNID.  FISHES         &                       & 0.5  & 3/4 DIGESTED\\
+ & 225 & 61  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 0.2  & 1/2 DIGESTED\\
+ &     &     &                       &                       &      & 43 specimens empty or everted\\ \hline
+\multirow{10}{*}{18}
+ & 155 & 23  & EUPHAUSIIDS           & EUPHAUSIACEA          & 2.5  & 1/2 DIGESTED\\
+ & 145 & 22  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 2.0  & 1/2 DIGESTED\\
+ & 230 & 79  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.5  & 1/4 DIGESTED\\
+ & 290 & 174 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 1.0  & FRESH\\
+ & 305 & 165 & UNID. REMAINS         &                       & 1.0  & 3/4 DIGESTED\\
+ & 205 & 56  & UNID. REMAINS         &                       & 1.0  & 3/4 DIGESTED\\
+ & 145 & 17  & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.5  & 1/2 DIGESTED\\
+ & 125 & 14  & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.5  & 1/2 DIGESTED\\
+ & 130 & 14  & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.5  & 1/2 DIGESTED\\
+ &     &     &                       &                       &      & 41 specimens empty or everted\\ \hline
+\multirow{7}{*}{19}
+ & 305 & 195 & SQUIDS                & TEUTHIDA              & 2.0  & 1/2 DIGESTED\\
+ & 145 & 22  & UNID. REMAINS         &                       & 0.8  & 3/4 DIGESTED\\
+ & 150 & 26  & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 0.5  & 1/2 DIGESTED\\
+ & 150 & 23  & UNID. REMAINS         &                       & 0.5  & 3/4 DIGESTED\\
+ & 150 & 19  & UNID. REMAINS         &                       & 0.5  & 3/4 DIGESTED\\
+ & 135 & 14  & UNID. REMAINS         &                       & 0.3  & 3/4 DIGESTED\\
+ &     &     &                       &                       &      & 44 specimens empty or everted\\ \hline
+\multirow{10}{*}{21}
+ & 270 & 114 & EUPHAUSIIDS           & EUPHAUSIACEA          & 2.5  & 1/2 DIGESTED\\
+ & 340 & 238 & LANTERNFISHES         & MYCTOPHIDAE           & 2.0  & FRESH\\
+ & 275 & 120 & EUPHAUSIIDS           & EUPHAUSIACEA          & 2.0  & 1/2 DIGESTED\\
+ & 375 & 338 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 2.0  & 1/2 DIGESTED\\
+ & 130 & 17  & EUPHAUSIIDS           & EUPHAUSIACEA          & 1.0  & 1/2 DIGESTED\\
+ & 145 & 21  & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.8  & 3/4 DIGESTED\\
+ & 265 & 104 & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.8  & 1/2 DIGESTED\\
+ & 150 & 23  & EUPHAUSIIDS           & EUPHAUSIACEA          & 0.3  & 3/4 DIGESTED\\
+ & 260 & 109 & UNID.  FISHES         &                       & 0.3  & 3/4 DIGESTED\\
+ &     &     &                       &                       &      & 41 specimens empty or everted\\ \hline
+\multirow{11}{*}{22}
+ & 475 & 595 & PACIFIC HAKE          & MERLUCCIUS PRODUCTUS  & 10.0 & FRESH\\
+ & 305 & 177 & PACIFIC HAKE          & MERLUCCIUS PRODUCTUS  & 10.0 & FRESH\\
+ & 250 & 98  & SQUIDS                & TEUTHIDA              & 3.0  & 1/2 DIGESTED\\
+ & 150 & 21  & SQUIDS                & TEUTHIDA              & 2.0  & 1/2 DIGESTED\\
+ & 250 & 101 & GONATUS               & GONATUS               & 2.0  & 1/2 DIGESTED\\
+ & 145 & 16  & EUPHAUSIIDS           & EUPHAUSIACEA          & 1.0  & 1/2 DIGESTED\\
+ & 130 & 13  & EUPHAUSIIDS           & EUPHAUSIACEA          & 1.0  & 1/2 DIGESTED\\
+ & 150 & 19  & UNID. REMAINS         &                       & 1.0  & 3/4 DIGESTED\\
+ & 300 & 153 & GLASS SHRIMP          & PASIPHAEA PACIFICA    & 1.0  & 3/4 DIGESTED\\
+ & 245 & 88  & UNID.  FISHES         &                       & 1.0  & 3/4 DIGESTED\\
+ &     &     &                       &                       &      & 40 specimens empty or everted\\ \hline
+\end{tabular}
+  \caption{Stomach content samples with associated weight and length by set for Pacific Hake.}
+    \label{StomachHake}
+}
+\end{center}
+\end{table*}
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Length(mm)} & {\bf Weight(g)} & {\bf Species} & {\bf Science Name} & {\bf Prey Volume(cc)} & {\bf Digestion State}\\ \hline \hline
+\multirow{15}{*}{2}
+ & 475 & 998  & UNID.  FISHES &  & 1.5 & 1/2 DIGESTED\\
+ & 595 & 1905 & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ & 290 & 206  & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ & 290 & 215  & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ & 265 & 162  & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 400 & 370  & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 385 & 410  & EUPHAUSIIDS & EUPHAUSIACEA & 0.2 & 1/2 DIGESTED\\
+ & 390 & 490  & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 295 & 159  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 295 & 217  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 375 & 433  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 285 & 247  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 280 & 159  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 290 & 191  & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ &  &  &  &   &  & 11 specimens empty or everted\\ \hline
+\multirow{13}{*}{3}
+ & 285 & 159 & UNID. REMAINS &  & 0.4 & 1/2 DIGESTED\\
+ & 400 & 472 & PINK SHRIMP (SMOOTH) & PANDALUS JORDANI & 0.3 & 1/4 DIGESTED\\
+ & 325 & 320 & UNID.  FISHES &  & 0.2 & FULLY DIGESTED\\
+ & 320 & 278 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 285 & 169 & UNID. REMAINS &  & 0.2 & FULLY DIGESTED\\
+ & 285 & 208 & PINK SHRIMP (SMOOTH) & PANDALUS JORDANI & 0.2 & 3/4 DIGESTED\\
+ & 365 & 416 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 295 & 155 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 415 & 511 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 365 & 406 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 325 & 259 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 310 & 237 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 13 specimens empty or everted\\ \hline
+\multirow{16}{*}{5}
+ & 365 & 366 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 3 & FRESH\\
+ & 315 & 256 & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ & 290 & 153 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 355 & 348 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 275 & 145 & UNID.  FISHES &  & 0.2 & 1/4 DIGESTED\\
+ & 345 & 306 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 275 & 138 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 275 & 136 & UNID. REMAINS &  & 0.1 & 1/2 DIGESTED\\
+ & 300 & 224 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 325 & 279 & UNID. REMAINS &  & 0.1 & 1/2 DIGESTED\\
+ & 345 & 305 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 375 & 342 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 330 & 217 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 335 & 287 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 300 & 206 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 10 specimens empty or everted\\ \hline
+\multirow{2}{*}{6}
+ & 265 & 110 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 24 specimens empty or everted\\ \hline
+\multirow{16}{*}{8}
+ & 285 & 143 & UNID.  FISHES &  & 2.0 & 1/2 DIGESTED\\
+ & 270 & 148 & UNID.  FISHES &  & 1.0 & 1/2 DIGESTED\\
+ & 335 & 240 & PINK SHRIMP (SMOOTH) & PANDALUS JORDANI & 0.5 & 1/2 DIGESTED\\
+ & 335 & 287 & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.5 & FRESH\\
+ & 335 & 273 & UNID.  FISHES &  & 0.5 & 1/2 DIGESTED\\
+ & 300 & 179 & UNID. REMAINS &  & 0.3 & FULLY DIGESTED\\
+ & 270 & 134 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 285 & 165 & UNID. REMAINS &  & 0.2 & FULLY DIGESTED\\
+ & 330 & 303 & UNID. REMAINS &  & 0.2 & 3/4 DIGESTED\\
+ & 285 & 174 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 310 & 216 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 325 & 252 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 330 & 296 & UNID. REMAINS &  & 0.1 & FULLY DIGESTED\\
+ & 285 & 159 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ & 295 & 166 & UNID. REMAINS &  & 0.1 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 10 specimens empty or everted\\ \hline
+\multirow{6}{*}{14}
+ & 460 & 596 & GLASS SHRIMP & PASIPHAEA PACIFICA & 1.0 & 1/2 DIGESTED\\
+ & 380 & 377 & GLASS SHRIMP & PASIPHAEA PACIFICA & 1.0 & 1/2 DIGESTED\\
+ & 350 & 324 & UNID. REMAINS &  & 0.5 & FULLY DIGESTED\\
+ & 315 & 245 & GLASS SHRIMP & PASIPHAEA PACIFICA & 0.5 & 1/2 DIGESTED\\
+ & 335 & 271 & UNID. REMAINS &  & 0.2 & FULLY DIGESTED\\
+ &  &  &  &  &  & 45 specimens empty or everted\\ \hline
+\end{tabular}
+  \caption{Stomach content samples with associated weight and length by set for Walleye Pollock, sets 2-14.}
+    \label{StomachPollock2-14}
+}
+\end{center}
+\end{table*}
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | c | c | c | }
+\hline
+{\bf Set} & {\bf Length(mm)} & {\bf Weight(g)} & {\bf Species} & {\bf Science Name} & {\bf Prey Volume(cc)} & {\bf Digestion State}\\ \hline \hline
+\multirow{36}{*}{15}
+ & 245 & 117 & EUPHAUSIIDS & EUPHAUSIACEA & 2.0 & 3/4 DIGESTED\\
+ & 265 & 151 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 225 & 83 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 260 & 146 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 260 & 132 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 250 & 105 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 235 & 110 & EUPHAUSIIDS & EUPHAUSIACEA & 0.8 & 3/4 DIGESTED\\
+ & 240 & 113 & EUPHAUSIIDS & EUPHAUSIACEA & 0.8 & 1/2 DIGESTED\\
+ & 230 & 92 & EUPHAUSIIDS & EUPHAUSIACEA & 0.8 & 1/2 DIGESTED\\
+ & 235 & 107 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 270 & 159 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 1/2 DIGESTED\\
+ & 240 & 104 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 1/2 DIGESTED\\
+ & 245 & 121 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 1/2 DIGESTED\\
+ & 250 & 123 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 225 & 88 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 250 & 129 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 245 & 126 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 1/2 DIGESTED\\
+ & 260 & 137 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 260 & 127 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 245 & 104 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 1/2 DIGESTED\\
+ & 235 & 104 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 220 & 92 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 245 & 115 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 270 & 150 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 255 & 131 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 245 & 106 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 235 & 87 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 1/2 DIGESTED\\
+ & 255 & 127 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 255 & 143 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 260 & 120 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 1/2 DIGESTED\\
+ & 225 & 82 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 250 & 113 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 1/2 DIGESTED\\
+ & 230 & 82 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ & 225 & 90 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 1/2 DIGESTED\\
+ & 225 & 83 & EUPHAUSIIDS & EUPHAUSIACEA & 0.3 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 15 specimens empty or everted\\ \hline
+\multirow{10}{*}{16}
+ & 430 & 469 & NORTHERN SMOOTHTONGUE & LEUROGLOSSUS SCHMIDTI & 4.0 & FRESH\\
+ & 390 & 357 & AMPHIPODS & AMPHIPODA & 2.0 & 1/2 DIGESTED\\
+ & 335 & 255 & UNID. REMAINS &  & 1.0 & 3/4 DIGESTED\\
+ & 370 & 327 & UNID. REMAINS &  & 0.8 & 1/2 DIGESTED\\
+ & 445 & 560 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 300 & 200 & UNID. REMAINS &  & 0.5 & 3/4 DIGESTED\\
+ & 370 & 342 & UNID. REMAINS &  & 0.5 & 3/4 DIGESTED\\
+ & 345 & 287 & UNID. REMAINS &  & 0.5 & 3/4 DIGESTED\\
+ & 385 & 370 & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 41 specimens empty or everted\\ \hline
+\multirow{17}{*}{17}
+ & 440 & 531 & AMPHIPODS & AMPHIPODA & 3.0 & 1/4 DIGESTED\\
+ & 445 & 526 & AMPHIPODS & AMPHIPODA & 2.5 & 1/4 DIGESTED\\
+ & 440 & 531 & UNID.  FISHES &  & 2.0 & 3/4 DIGESTED\\
+ & 420 & 539 & AMPHIPODS & AMPHIPODA & 1.5 & 1/4 DIGESTED\\
+ & 345 & 306 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 3/4 DIGESTED\\
+ & 300 & 221 & GLASS SHRIMP & PASIPHAEA PACIFICA & 1.0 & 1/4 DIGESTED\\
+ & 355 & 350 & EUPHAUSIIDS & EUPHAUSIACEA & 1.0 & 1/2 DIGESTED\\
+ & 375 & 364 & EUPHAUSIIDS & EUPHAUSIACEA & 0.5 & 3/4 DIGESTED\\
+ & 395 & 364 & UNID.  FISHES &  & 0.5 & 3/4 DIGESTED\\
+ & 265 & 125 & UNID. REMAINS &  & 0.5 & 3/4 DIGESTED\\
+ & 330 & 278 & UNID. REMAINS &  & 0.5 & 3/4 DIGESTED\\
+ & 350 & 304 & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ & 365 & 352 & AMPHIPODS & AMPHIPODA & 0.3 & 1/4 DIGESTED\\
+ & 380 & 349 & UNID. REMAINS &  & 0.3 & 1/2 DIGESTED\\
+ & 365 & 401 & UNID. REMAINS &  & 0.3 & 1/2 DIGESTED\\
+ & 270 & 151 & UNID. REMAINS &  & 0.3 & 3/4 DIGESTED\\
+ &  &  &  &  &  & 34 specimens empty or everted\\ \hline
+\end{tabular}
+  \caption{Stomach content samples with associated weight and length by set for Walleye Pollock, sets 15-17.}
+    \label{StomachPollock15-17}
+}
+\end{center}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{tabular}{ | c | c | c | c | c | c | c | }
+\hline
+{\bf Species} & {\bf Set} & {\bf \# less or equal} & {\bf Proportion less or equal} & {\bf \# greater than} & {\bf Proportion greater} & {\bf Sample size}\\ \hline \hline
+\multirow{11}{*}{Pacific Hake}
+ & 10 & 18 & 0.36 & 32 & 0.64 & 50\\ 
+ & 11 & 4 & 0.08 & 46 & 0.92 & 50\\ 
+ & 12 & 12 & 0.24 & 38 & 0.76 & 50\\ 
+ & 13 & 6 & 0.12 & 44 & 0.88 & 50\\ 
+ & 14 & 3 & 0.06 & 47 & 0.94 & 50\\ 
+ & 16 & 1 & 0.02 & 49 & 0.98 & 50\\ 
+ & 17 & 0 & 0.00 & 50 & 1.00 & 50\\ 
+ & 18 & 11 & 0.22 & 39 & 0.78 & 50\\ 
+ & 19 & 9 & 0.18 & 41 & 0.82 & 50\\ 
+ & 21 & 9 & 0.18 & 41 & 0.82 & 50\\ 
+ & 22 & 15 & 0.30 & 35 & 0.70 & 50\\ \hline 
+\multirow{9}{*}{Walleye Pollock}
+ & 2 & 23 & 0.46 & 27 & 0.54 & 50\\ 
+ & 3 & 23 & 0.46 & 27 & 0.54 & 50\\ 
+ & 5 & 12 & 0.48 & 13 & 0.52 & 25\\ 
+ & 6 & 0 & 0.00 & 25 & 1.00 & 25\\ 
+ & 8 & 14 & 0.56 & 11 & 0.44 & 25\\ 
+ & 14 & 0 & 0.00 & 50 & 1.00 & 50\\ 
+ & 15 & 47 & 0.94 & 3 & 0.06 & 50\\ 
+ & 16 & 2 & 0.04 & 48 & 0.96 & 50\\ 
+ & 17 & 11 & 0.22 & 39 & 0.78 & 50\\ \hline
+\end{tabular}
+  \caption{Proportions of samples by length mode.  The length mode cutoffs are 20.0 cm and 31.0 cm for Hake and Pollock respectively. These proportions are used in the calculation of $\hat{N}_{\leq}$, $\hat{N}_>$, $\hat{B}_{\leq}$, and $\hat{B}_>$ (equations \ref{Numbers} and \ref{Biomass}, tables \ref{PollockBiomassEstimates} and \ref{HakeBiomassEstimates}).}
+    \label{BimodalProportions}
+}
+\end{center}
+\end{table*}
+
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{adjustwidth}{-0.5in}{-0.5in}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | c | c | }
+\hline
+{\bf $s_A$} & {\bf Date} & {\bf Set base} & {\bf Latitude} & {\bf Longitude} & {\bf Length} & {\bf Width} & {\bf Area} & {\bf $\hat{N}_{\leq31cm}$} & {\bf $\hat{N}_{>31cm}$} & {\bf $\hat{N}$} & {\bf $\hat{B}_{\leq31cm}$} & {\bf $\hat{B}_{>31cm}$} & {\bf $\hat{B}$} \\ \hline
+\hline
+ 176.13  & 3/16 & 2 & 48.83 & -123.12 & 4004.07   & 3.0 & 6.49  &	256180  & 174250   & 430430   & 30127  & 47466   & 77592 	 \\ \hline
+ 140.78  & 3/16 & 2 & 48.86 & -123.19 & 3121.07   & 3.0 & 5.06  &	159646  & 108589   & 268235   & 18774  & 29580   & 48354 	 \\ \hline
+ 67.01   & 3/16 & 2 & 48.85 & -122.98 & 11853.62  & 3.0 & 19.2  &	288342  & 196126   & 484468   & 33909  & 53425   & 87334 	 \\ \hline
+ 143.48  & 3/17 & 3 & 48.90 & -123.25 & 3933.93   & 3.0 & 6.37  &	204832  & 139324   & 344156   & 24088  & 37952   & 62040 	 \\ \hline
+ 201.3   & 3/17 & 3 & 48.94 & -123.30 & 9695.96   & 3.0 & 15.71 &	708741  & 482075   & 1190816  & 83348  & 131317  & 214665  \\ \hline
+ 262.99  & 3/17 & 3 & 48.98 & -123.35 & 10284.35  & 3.0 & 16.66 &	981933  & 667895   & 1649828  & 115475 & 181935  & 297410  \\ \hline
+ 619.02  & 3/18 & 3 & 49.11 & -123.40 & 3783.79   & 0.8 & 1.63  &	226131  & 153811   & 379942   & 26593  & 41898   & 68491 	 \\ \hline
+ 641.14  & 3/18 & 3 & 49.09 & -123.40 & 4463.66   & 0.8 & 1.93  &	277318  & 188627   & 465945   & 32613  & 51382   & 83995 	 \\ \hline
+ 506.8   & 3/18 & 3 & 49.08 & -123.39 & 5875.19   & 0.8 & 2.54  &	288495  & 196230   & 484724   & 33927  & 53453   & 87380 	 \\ \hline
+ 754.66  & 3/18 & 3 & 49.06 & -123.35 & 2252.7    & 3.0 & 3.65  &	617322  & 419893   & 1037215  & 72597  & 114379  & 186976  \\ \hline
+ 232.29  & 3/17 & 3 & 49.08 & -123.45 & 18332.62  & 3.0 & 29.7  &	1546161 & 1051674  & 2597835  & 181828 & 286476  & 468305  \\ \hline
+ 212.23  & 3/17 & 3 & 49.02 & -123.41 & 15556.36  & 3.0 & 25.2  &	1198602 & 815270   & 2013872  & 140956 & 222080  & 363035  \\ \hline
+ 415.52  & 3/18 & 5 & 49.19 & -123.51 & 14182.11  & 3.0 & 22.97 &	2232050 & 1401060  & 3633110  & 262489 & 381649  & 644138  \\ \hline
+ 5147.36 & 3/18 & 6 & 49.26 & -123.39 & 10256.15  & 3.0 & 16.61 &	0       & 24135407 & 24135407 & 0      & 6574485 & 6574485 \\ \hline
+ 827.35  & 3/19 & 8 & 49.32 & -123.44 & 1733.54   & 3.0 & 2.81  &	634298  & 288768   & 923066   & 74593  & 78660   & 153254  \\ \hline
+ 578.06  & 3/19 & 8 & 49.22 & -123.60 & 17962.41  & 3.0 & 29.1  &	4589483 & 2089388  & 6678871  & 539723 & 569149  & 1108872 \\ \hline
+ 350.45  & 3/19 & 8 & 49.25 & -123.65 & 20662.69  & 3.0 & 33.47 &	3200218 & 1456917  & 4657136  & 376346 & 396864  & 773210  \\ \hline
+ 47.30   & 3/19 & 8 & 49.35 & -123.52 & 2274.82   & 3.0 & 3.68  &	47491   & 21620    & 69111    & 5585   & 5889    & 11474 	 \\ \hline
+ 108.57  & 3/19 & 8 & 49.36 & -123.60 & 3643.99   & 3.0 & 5.9   &	174767  & 79564    & 254331   & 20553  & 21673   & 42226 	 \\ \hline
+ 210.29  & 3/19 & 8 & 49.29 & -123.70 & 3406.23   & 3.0 & 5.52  &	316705  & 144182   & 460887   & 37245  & 39275   & 76520 	 \\ \hline
+ 96.30   & 3/19 & 8 & 49.32 & -123.66 & 3811.27   & 3.0 & 6.17  &	162110  & 73801    & 235911   & 19064  & 20104   & 39168 	 \\ \hline
+ 513.93  & 3/19 & 8 & 49.25 & -123.76 & 10128.15  & 3.0 & 16.41 &	2300967 & 1047528  & 3348495  & 270594 & 285347  & 555940  \\ \hline
+ 214.07  & 3/19 & 8 & 49.29 & -123.80 & 14900.51  & 3.0 & 24.14 &	1409908 & 641869   & 2051777  & 165805 & 174845  & 340650  \\ \hline
+ 29.86   & 3/19 & 8 & 49.36 & -123.71 & 2953.48   & 3.0 & 4.78  &	38942   & 17728    & 56670    & 4580   & 4829    & 9409 	 \\ \hline
+ 133.07  & 3/19 & 8 & 49.39 & -123.67 & 4697.85   & 3.0 & 7.61  &	276288  & 125782   & 402070   & 32492  & 34263   & 66754 	 \\ \hline
+ 173.46  & 3/23 & 14 & 49.47 & -124.62 & 4110.75  & 3.0 & 6.66  &	0       & 326117   & 326117   & 0      & 88834   & 88834 	 \\ \hline
+ 147.61  & 3/23 & 14 & 49.54 & -124.53 & 5476.38  & 3.0 & 8.87  &	0       & 369607   & 369607   & 0      & 100681  & 100681  \\ \hline
+ 154.37  & 3/23 & 14 & 49.66 & -124.49 & 30445.85 & 3.0 & 49.32 &	0       & 2149248  & 2149248  & 0      & 585455  & 585455  \\ \hline
+ 138.34  & 3/23 & 14 & 49.59 & -124.65 & 5676.86  & 3.0 & 9.2   &	0       & 359282   & 359282   & 0      & 97869   & 97869 	 \\ \hline
+ 88.75   & 3/23 & 14 & 49.67 & -124.58 & 4064.01  & 3.0 & 6.58  &	0       & 164852   & 164852   & 0      & 44906   & 44906 	 \\ \hline
+ 150.95  & 3/23 & 14 & 49.70 & -124.63 & 3986.4   & 3.0 & 6.46  &	0       & 275275   & 275275   & 0      & 74985   & 74985 	 \\ \hline
+ 263.00  & 3/23 & 14 & 49.71 & -124.70 & 8378.86  & 3.0 & 13.57 &	0       & 1007479  & 1007479  & 0      & 274437  & 274437  \\ \hline
+ 100.68  & 3/23 & 14 & 49.79 & -124.68 & 2279.64  & 3.0 & 3.69  &	0       & 104875   & 104875   & 0      & 28568   & 28568 	 \\ \hline
+ 667.35  & 3/23 & 14 & 49.77 & -124.74 & 3124.56  & 3.0 & 5.06  &	0       & 953245   & 953245   & 0      & 259664  & 259664  \\ \hline
+ 607.20  & 3/23 & 14 & 49.75 & -124.80 & 6103.52  & 3.0 & 9.89  &	0       & 1695230  & 1695230  & 0      & 461781  & 461781  \\ \hline
+ 398.94  & 3/24 & 16 & 49.80 & -124.81 & 12951.28 & 3.0 & 20.98 &	163111  & 2268218  & 2431329  & 19182  & 617863  & 637044  \\ \hline
+ 104.45  & 3/24 & 16 & 49.88 & -124.99 & 6711.12  & 3.0 & 10.87 &	22126   & 307687   & 329814   & 2602   & 83814   & 86416 	 \\ \hline
+ 60.61   & 3/24 & 16 & 49.91 & -124.91 & 5307.2   & 3.0 & 8.6   &	10158   & 141258   & 151417   & 1195   & 38479   & 39673 	 \\ \hline
+ 2438.63 & 3/24 & 17 & 50.01 & -124.87 & 6248.29  & 3.0 & 10.12 &	2645203 & 5434023  & 8079226  & 311076 & 1480228 & 1791304 \\ \hline
+ 165.84  & 3/24 & 16 & 49.98 & -125.07 & 4610.71  & 3.0 & 7.47  &	24142   & 335723   & 359866   & 2839   & 91451   & 94290 	 \\ \hline
+ 239.20  & 3/25 & 17 & 49.83 & -124.60 & 6723.52  & 3.0 & 10.89 &	279204  & 573567   & 852771   & 32834  & 156240  & 189074  \\ \hline
+ 93.53   & 3/24 & 16 & 49.92 & -125.05 & 7922.94  & 3.0 & 12.83 &	23386   & 325199   & 348585   & 2750   & 88584   & 91334 	 \\ \hline
+ 286.45  & 3/24 & 16 & 49.85 & -124.90 & 11221.9  & 3.0 & 18.18 &	101487  & 1411284  & 1512771  & 11935  & 384434  & 396369  \\ \hline
+ 82.15   & 3/24 & 17 & 49.96 & -124.84 & 2840.99  & 3.0 & 4.6   & 40504   & 83207    & 123711   & 4763   & 22666   & 27429   \\ \hline
+& & & & & & & {\bf 537.15} & {\bf 25,446,251} &	{\bf 54,402,754} & {\bf 79,849,008} & {\bf 2,992,480} & {\bf 14,819,314} & {\bf 17,811,790} \\ \hline
+
+\end{tabular}
+\end{adjustwidth}
+  \caption{
+Pollock echo-integrated areas (aggregations). $s_A$ is the NASC or Nautical Acoustic Scattering Coefficient ($\frac{m^2}{nmi^2}$). {\it Set base} is the set or pelagic trawl number that the aggregation is based on. The {\it Length} column represents the length of the aggregation along the transect in meters, {\it Width} is the areal interpolation factor in nautical miles based on transect spacing, {\it Area} is the aggregation area calculated as $\frac{Length}{1852}*Width$ where 1852 is the number of meters in a nautical mile, the $\hat{N}$ columns are the abundance numbers for the two length classes and their sum, the $\hat{B}$ columns are the biomass in kilograms for the two length classes and their sum.  Boldface values on the last row are column sums.
+    \label{PollockBiomassEstimates}
+}
+\end{center}
+\end{table*}
+
+\begin{table*}
+\begin{center}
+{\tiny
+\begin{adjustwidth}{-0.5in}{-0.5in}
+\begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | c | c | c | c | }
+\hline
+{\bf $s_A$} & {\bf Date} & {\bf Set base} & {\bf Latitude} & {\bf Longitude} & {\bf Length} & {\bf Width} & {\bf Area} & {\bf $\hat{N}_{\leq20cm}$} & {\bf $\hat{N}_{>20cm}$} & {\bf $\hat{N}$} & {\bf $\hat{B}_{\leq20cm}$} & {\bf $\hat{B}_{>20cm}$} & {\bf $\hat{B}$} \\ \hline
+\hline
+ 82.08   & 3/20 & 10 & 49.28 & -123.90  & 77986.55 & 3.00 & 126.33 &  8330046 & 3358044 & 11688091 & 151607 & 642730  & 794337  \\ \hline
+ 208.87  & 3/21 & 11 & 49.78 & -124.51  & 7540.34  & 2.00 & 8.14   &  303636  & 791795  & 1095432  & 5526   & 151550  & 157076  \\ \hline
+ 231.24  & 3/21 & 11 & 49.75 & -124.44  & 7788.06  & 2.00 & 8.41   &  347199  & 905395  & 1252595  & 6319   & 173293  & 179612  \\ \hline
+ 154.73  & 3/21 & 11 & 49.71 & -124.32  & 3747.24  & 3.00 & 6.07   &  167673  & 437243  & 604917   & 3052   & 83688   & 86740   \\ \hline
+ 68.69   & 3/21 & 11 & 49.71 & -124.25  & 1034.91  & 2.00 & 1.12   &  13705   & 35739   & 49444    & 249    & 6840    & 7090 	  \\ \hline
+ 261.60  & 3/21 & 11 & 49.68 & -124.27  & 8007.6   & 2.00 & 8.65   &  403856  & 1053140 & 1456996  & 7350   & 201571  & 208921 	\\ \hline
+ 153.97  & 3/21 & 11 & 49.64 & -124.21  & 8190.61  & 2.00 & 8.85   &  243130  & 634013  & 877143   & 4425   & 121350  & 125775 	\\ \hline
+ 123.43  & 3/21 & 11 & 49.61 & -124.10  & 3366.14  & 2.00 & 3.64   &  80101   & 208881  & 288982   & 1458   & 39980   & 41438 	\\ \hline
+ 177.30  & 3/21 & 11 & 49.60 & -124.20  & 6193.25  & 2.00 & 6.69   &  211697  & 552043  & 763740   & 3853   & 105661  & 109514 	\\ \hline
+ 216.45  & 3/21 & 11 & 49.57 & -124.13  & 8198.49  & 2.00 & 8.85   &  342120  & 892149  & 1234269  & 6227   & 170757  & 176984 	\\ \hline
+ 76.01   & 3/21 & 12 & 49.53 & -124.08  & 3328.06  & 2.00 & 3.59   &  146309  & 105059  & 251368   & 2663   & 20108   & 22771 	\\ \hline
+ 232.68  & 3/22 & 12 & 49.53 & -124.13  & 7858.52  & 2.00 & 8.49   &  1057566 & 759402  & 1816968  & 19248  & 145349  & 164597 	\\ \hline
+ 234.84  & 3/22 & 13 & 49.38 & -124.25  & 10443.88 & 3.00 & 16.92  &  1063905 & 1769155 & 2833061  & 19363  & 338616  & 357979 	\\ \hline
+ 361.63  & 3/22 & 13 & 49.33 & -124.04  & 7958.53  & 3.00 & 12.89  &  1248436 & 2076010 & 3324446  & 22722  & 397348  & 420070 	\\ \hline
+ 165.69  & 3/22 & 13 & 49.39 & -123.96  & 9205.71  & 3.00 & 14.91  &  661641  & 1100235 & 1761877  & 12042  & 210585  & 222627 	\\ \hline
+ 218.47  & 3/22 & 13 & 49.40 & -124.05  & 18102.58 & 3.00 & 29.32  &  1715542 & 2852754 & 4568296  & 31223  & 546017  & 577240 	\\ \hline
+ 231.06  & 3/22 & 13 & 49.44 & -124.06  & 7273.42  & 3.00 & 11.78  &  729008  & 1212259 & 1941268  & 13268  & 232026  & 245294 	\\ \hline
+ 243.14  & 3/22 & 13 & 49.37 & -124.16  & 11852.76 & 3.00 & 19.20  &  1250101 & 2078777 & 3328878  & 22752  & 397878  & 420630 	\\ \hline
+ 290.96  & 3/22 & 13 & 49.42 & -124.31  & 4605.36  & 3.00 & 7.46   &  581254  & 966560  & 1547814  & 10579  & 185000  & 195578 	\\ \hline
+ 378.25  & 3/22 & 13 & 49.39 & -124.34  & 3749.91  & 3.00 & 6.07   &  615274  & 1023132 & 1638407  & 11198  & 195828  & 207026 	\\ \hline
+ 204.59  & 3/22 & 13 & 49.43 & -124.42  & 10624.94 & 3.00 & 17.21  &  942931  & 1567989 & 2510920  & 17161  & 300113  & 317274 	\\ \hline
+ 143.06  & 3/23 & 13 & 49.44 & -124.51  & 9468.43  & 3.00 & 15.34  &  587578  & 977076  & 1564653  & 10694  & 187012  & 197706 	\\ \hline
+ 43.37	 & 3/23 & 14 & 49.47 & -124.62	& 4110.75	 & 1.46 & 3.47   &  38664   & 137354  & 176018   & 704    & 26290   & 26993 	\\ \hline
+ 36.90	 & 3/23 & 14 & 49.54 & -124.53	& 5476.38	 & 1.39 & 5.09   &  43832   & 155715  & 199547   & 798    & 29804   & 30602 	\\ \hline
+ 38.59	 & 3/23 & 14 & 49.66 & -124.49	& 30445.85 & 1.64 & 6.71   &  254841  & 905331  & 1160172  & 4638   & 173280  & 177918 	\\ \hline
+ 34.59	 & 3/23 & 14 & 49.59 & -124.65	& 5676.86	 & 1.73 & 5.28   &  42584   & 151281  & 193865   & 775    & 28955   & 29730 	\\ \hline
+ 22.19	 & 3/23 & 14 & 49.67 & -124.58	& 4064.01	 & 1.85 & 8.12   &  19557   & 69476   & 89033    & 356    & 13298   & 13654 	\\ \hline
+ 37.74	 & 3/23 & 14 & 49.70 & -124.63	& 3986.40	 & 1.25 & 5.84   &  32628   & 115913  & 148542   & 594    & 22186   & 22780 	\\ \hline
+ 65.75	 & 3/23 & 14 & 49.71 & -124.70	& 8378.86	 & 1.02 & 4.49   &  119486  & 424478  & 543964   & 2175   & 81245   & 83420 	\\ \hline
+ 25.17	 & 3/23 & 14 & 49.79 & -124.68	& 2279.64	 & 0.78 & 1.96   &  12445   & 44210   & 56654    & 226    & 8462    & 8688 		\\ \hline
+ 166.84	 & 3/23 & 14 & 49.77 & -124.74	& 3124.56	 & 1.04 & 4.59   &  113063  & 401660  & 514723   & 2058   & 76878   & 78935 	\\ \hline
+ 151.80	 & 3/23 & 14 & 49.75 & -124.80	& 6103.52	 & 1.03 & 2.14   &  200952  & 713890  & 914842   & 3657   & 136638  & 140296 	\\ \hline
+ 99.74	 & 3/24 & 14 & 49.80 & -124.81	& 12951.28 & 1.74 & 4.03   &  280157  & 995267  & 1275425  & 5099   & 190494  & 195593 	\\ \hline
+ 212.07	 & 3/24 & 16 & 49.88 & -124.99	& 6711.12	 & 1.29 & 1.82   &  102896  & 1143292 & 1246188  & 1873   & 218826  & 220699 	\\ \hline
+ 123.06	 & 3/24 & 16 & 49.91 & -124.91	& 5307.20	 & 1.63 & 6.99   &  47218   & 524646  & 571864   & 859    & 100417  & 101277 	\\ \hline
+ 2438.63 & 3/24 & 17 & 50.01 & -124.87	& 6248.29  & 1.30 & 4.52   &  0       & 4163274 & 4163274  & 0      & 796851  & 796851 	\\ \hline
+ 336.71	 & 3/24 & 16 & 49.98 & -125.07	& 4610.71  & 2.00 & 6.47   &  112237  & 1247081 & 1359318  & 2043   & 238691  & 240734 	\\ \hline
+ 239.20	 & 3/25 & 17 & 49.83 & -124.60	& 6723.52	 & 2.00 & 8.84   &  0       & 439425  & 439425   & 0      & 84106   & 84106 	\\ \hline
+ 189.89	 & 3/24 & 16 & 49.92 & -125.05	& 7922.94	 & 2.00 & 4.10   &  108772  & 1208575 & 1317347  & 1980   & 231321  & 233301 	\\ \hline
+ 581.58	 & 3/24 & 16 & 49.85 & -124.90	& 11221.90 & 2.00 & 2.91   &  471841  & 5242684 & 5714526  & 8588   & 1003450 & 1012037 \\ \hline
+ 82.15	 & 3/24 & 17 & 49.96 & -124.84	& 2840.99	 & 2.00 & 8.63   &  0       & 63765   & 63765    & 0      & 12205   & 12205 	\\ \hline
+ 221.18  & 3/25 & 19 & 49.74 & -124.23  & 4397.95  & 2.00 & 7.58   &  308027  & 318193  & 626220   & 5606   & 60902   & 66508 	\\ \hline
+ 184.60  & 3/25 & 19 & 49.76 & -124.21  & 6783.99  & 2.00 & 2.15   &  377547  & 390008  & 767555   & 6871   & 74648   & 81519 	\\ \hline
+ 247.27  & 3/25 & 19 & 49.77 & -124.11  & 7572.63  & 2.00 & 3.09   &  666041  & 688025  & 1354066  & 12122  & 131688  & 143810 	\\ \hline
+ 237.19  & 3/25 & 19 & 49.79 & -124.03  & 5654.7   & 2.00 & 6.81   &  503259  & 519869  & 1023128  & 9159   & 99503   & 108662 	\\ \hline
+ 208.30  & 3/25 & 19 & 49.80 & -123.94  & 8128.89  & 2.00 & 8.52   &  679409  & 701834  & 1381243  & 12365  & 134331  & 146696 	\\ \hline
+ 110.29  & 3/25 & 19 & 49.86 & -123.89  & 8651.11  & 2.00 & 7.72   &  258677  & 267214  & 525891   & 4708   & 51145   & 55853 	\\ \hline
+ 105.71  & 3/25 & 19 & 49.91 & -123.94  & 8155.81  & 2.00 & 3.93   &  190732  & 197027  & 387758   & 3471   & 37711   & 41182 	\\ \hline
+ 120.36  & 3/25 & 19 & 49.95 & -123.98  & 4661.48  & 3.00 & 6.66   &  94916   & 98049   & 192965   & 1727   & 18767   & 20494 	\\ \hline
+ 95.20   & 3/25 & 19 & 49.99 & -123.96  & 8169.4   & 3.00 & 8.87   &  175428  & 181218  & 356647   & 3193   & 34685   & 37878 	\\ \hline
+ 247.00  & 3/25 & 18 & 50.04 & -123.85  & 3844.75  & 3.00 & 49.32  &  259293  & 208461  & 467755   & 4719   & 39899   & 44619 	\\ \hline
+ 125.62  & 3/25 & 18 & 50.06 & -123.81  & 4290.17  & 3.00 & 9.20   &  248583  & 199851  & 448434   & 4524   & 38251   & 42776 	\\ \hline
+ 100.89  & 3/25 & 18 & 50.08 & -123.79  & 2611.89  & 3.00 & 6.58   &  90112   & 72446   & 162558   & 1640   & 13866   & 15506 	\\ \hline
+ 155.50  & 3/25 & 18 & 50.12 & -123.82  & 7937.67  & 3.00 & 6.46   &  533335  & 428779  & 962115   & 9707   & 82068   & 91775 	\\ \hline
+ 91.38   & 3/25 & 18 & 50.17 & -123.90  & 6440.43  & 3.00 & 13.57  &  202814  & 163054  & 365869   & 3691   & 31209   & 34900 	\\ \hline
+ 270.46  & 3/27 & 21 & 49.78 & -124.53  & 5989.73  & 3.00 & 3.69   &  702715  & 725909  & 1428624  & 12789  & 138939  & 151728 	\\ \hline
+ 253.37  & 3/27 & 21 & 49.75 & -124.44  & 8189.62  & 3.00 & 5.06   &  900094  & 929803  & 1829897  & 16382  & 177964  & 194346 	\\ \hline
+ 207.56  & 3/27 & 21 & 49.71 & -124.33  & 3798.77  & 3.00 & 9.89   &  342023  & 353312  & 695336   & 6225   & 67624   & 73849 	\\ \hline
+ 4106.55 & 3/27 & 21 & 49.71 & -124.24  & 2697.86  & 3.00 & 20.98  &  4805799 & 4964420 & 9770219  & 87466  & 950190  & 1037655 \\ \hline
+ 339.49  & 3/27 & 21 & 49.68 & -124.27  & 7990.76  & 3.00 & 10.87  &  1176750 & 1215590 & 2392340  & 21417  & 232664  & 254081 	\\ \hline
+ 224.35  & 3/27 & 21 & 49.64 & -124.24  & 7022.95  & 3.00 & 8.60   &  683463  & 706021  & 1389484  & 12439  & 135132  & 147571 	\\ \hline
+ 94.17   & 3/27 & 21 & 49.64 & -124.17  & 1993.93  & 3.00 & 10.12  &  81450   & 84138   & 165589   & 1482   & 16104   & 17586 	\\ \hline
+ 104.27  & 3/27 & 21 & 49.61 & -124.10  & 2861.14  & 3.00 & 7.47   &  129410  & 133681  & 263091   & 2355   & 25587   & 27942 	\\ \hline
+ 271.28  & 3/27 & 21 & 49.60 & -124.20  & 6304.73  & 3.00 & 10.89  &  741914  & 766401  & 1508315  & 13503  & 146689  & 160192 	\\ \hline
+ 511.77  & 3/27 & 21 & 49.57 & -124.13  & 7885.5   & 3.00 & 12.83  &  1750545 & 1808323 & 3558868  & 31860  & 346113  & 377973 	\\ \hline
+ 178.86  & 3/28 & 22 & 49.53 & -124.09  & 7151.69  & 3.00 & 18.18  &  924783  & 489303  & 1414086  & 16831  & 93653   & 110484 	\\ \hline
+ 296.41  & 3/28 & 22 & 49.50 & -124.09  & 3636.92  & 3.00 & 4.60   &  779371  & 412366  & 1191737  & 14185  & 78927   & 93111   \\ \hline
+& & & & & & & {\bf 709.57} & {\bf 40,650,375} &	{\bf 60,527,467} & {\bf 101,177,841} & {\bf 739,837} & {\bf 11,584,957} & {\bf 12,324,794} \\ \hline
+
+\end{tabular}
+\end{adjustwidth}
+  \caption{
+Hake echo-integrated areas (aggregations). $s_A$ is the NASC or Nautical Acoustic Scattering Coefficient ($\frac{m^2}{nmi^2}$). {\it Set base} is the set or pelagic trawl number that the aggregation is based on. The {\it Length} column represents the length of the aggregation along the transect in meters, {\it Width} is the areal interpolation factor in nautical miles based on transect spacing, {\it Area} is the aggregation area calculated as $\frac{Length}{1852}*Width$ where 1852 is the number of meters in a nautical mile, the $\hat{N}$ columns are the abundance numbers for the two length classes and their sum, the $\hat{B}$ columns are the biomass in kilograms for the two length classes and their sum.  Boldface values on the last row are column sums.
+    \label{HakeBiomassEstimates}
+}
+\end{center}
+\end{table*}
+
+\clearpage
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{survey.pdf}}
+    \caption{Survey waypoints, transects, CTD cast locations, and fishing locations.  Transects are shown by operating day
+      and generally progress South to North from March 16 - March 27.  The colors of the transects represent different days, shown to increase readability of the map.  Red triangles and squares mark beginning and
+      end points of pelagic trawls, respectively and are labelled with set number.  CTD cast locations are prefixed by 'CTD'.
+    }
+    \label{Survey}
+    \vfill
+  }
+\end{figure*}
+
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{survey_texada_closeup.pdf}}
+    \caption{Closeup of Malaspina Strait - Survey waypoints, transects, CTD cast locations, and fishing locations.
+      The transect lines prefixed with 'ME' took place during the night of March 20 and again during the night 
+      of March 27.  Those prefixed with 'MO' took place during the day of March 21 and again during the day of March 27. 
+      The transect in Jervis Inlet was run on March 25.  
+      The black line connecting waypoints 51, 56, and 59 was a transect
+      run specifically to test the multinet system and run the strobe on/off experiment on Euphausiids.
+    }
+    \label{SurveyCloseTexada}
+    \vfill
+  }
+\end{figure*}
+
+
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{survey_pollock_grid_closeup.pdf}}
+    \caption{Closeup of a grid executed over possible Walleye Pollock spawning grounds.  Fishing sets 3 and 4 took place at 
+      15:29 and 16:28 PST March 17 respectively and because of the large
+      catch of spawning Pollock, a tighter sub-grid was constructed and the area was surveyed during the night of March 17.  Aggregations found on this grid were not used in biomass estimation as they overlapped official transects.
+    }
+    \label{SurveyClosePollockGrid}
+    \vfill
+  }
+\end{figure*}
+
+% figures showing spatial structure of the stocks
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{Pollock_biomass_overall_spatial.pdf}}
+    \caption{
+Spatial distribution of Pollock in the Strait of Georgia.  Blue bars show biomass for the length class with mean of 25.5 cm ($\hat{B}_{\leq31}$ in table \ref{PollockBiomassEstimates}). Red bars show biomass for the length class with mean 33.5 cm ($\hat{B}_{>31}$ in table \ref{PollockBiomassEstimates}).  The bars are normalized by percent of total for each given length class. 
+    }
+    \label{PollockOverallSpatial}
+    \vfill
+  }
+\end{figure*}
+
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{Pollock_biomass_juvenile_adult_dist_normalized.pdf}}
+    \caption{
+Pollock biomass proportions of the two length classes by aggregation.  Blue bars show biomass for the length class with mean of 25.5 cm ($\hat{B}_{\leq31}$ in table \ref{PollockBiomassEstimates}). Red bars show biomass for the length class with mean 33.5 cm ($\hat{B}_{>31}$ in table \ref{PollockBiomassEstimates}).  The bars are normalized by total biomass in each aggregation, so the bars for each aggregation are the same size. 
+    }
+    \label{PollockJuvenileAdult}
+    \vfill
+  }
+\end{figure*}
+
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{Hake_biomass_overall_spatial.pdf}}
+    \caption{
+Spatial distribution of Hake in the Strait of Georgia.  Blue bars show biomass for the length class with mean of 15.0 cm ($\hat{B}_{\leq20}$ in table \ref{HakeBiomassEstimates}). Red bars show biomass for the length class with mean 31.5 cm ($\hat{B}_{>20}$ in table \ref{HakeBiomassEstimates}).  The bars are normalized by percent of total for each given length class. 
+    }
+    \label{HakeOverallSpatial}
+    \vfill
+  }
+\end{figure*}
+
+\begin{figure*}
+  \parbox[c][\textwidth][s]{\linewidth}{%
+    \vfill
+    \fbox{\includegraphics[width=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax]{Hake_biomass_juvenile_adult_dist_normalized.pdf}}
+    \caption{
+Hake biomass proportions of the two length classes by aggregation.  Blue bars show biomass for the length class with mean of 15.0 cm ($\hat{B}_{\leq20}$ in table \ref{HakeBiomassEstimates}). Red bars show biomass for the length class with mean 31.5 cm ($\hat{B}_{>20}$ in table \ref{HakeBiomassEstimates}).  The bars are normalized by total biomass in each aggregation, so the bars for each aggregation are the same size. 
+}
+    \label{HakeJuvenileAdult}
+    \vfill
+  }
+\end{figure*}
+
+
+% end figures showing spatial structure of the stocks
+
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=4.00in]{../AgeStructure/sog_Hake_length_barplot.pdf}
+  \caption{Length distribution for Pacific Hake from all sets. The gaussian kernel density function with bandwidth $\frac{0.36 \sigma}{1.34n^{-1/5}} $ helps illustrate the bimodality of the distribution. ({\it Silverman, 1986 \cite{Density}}).}
+  \label{HakeLengthDist}
+  \includegraphics[width=4.00in]{../AgeStructure/sog_Hake_age_barplot.pdf}
+  \caption{Age distribution for Pacific Hake from all sets.}
+  \label{HakeAgeDist}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_10_SPP_225_SID_7178.pdf} &
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_11_SPP_225_SID_7179.pdf} \\
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_12_SPP_225_SID_7180.pdf} & 
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_13_SPP_225_SID_7182.pdf}
+  \end{tabular}
+  \caption{Length distribution by sex for Pacific Hake for sets 10, 11, 12, and 13.  Refer to figures \ref{Survey}, \ref{SurveyCloseTexada}, and \ref{SurveyClosePollockGrid} for set locations. The gaussian kernel density functions use bandwidth $\frac{0.9 \sigma}{1.34n^{-1/5}} $ ({\it Silverman, 1986 \cite{Density}}).}
+  \label{HakeLengthDist10-13}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_14_SPP_225_SID_7183.pdf} &
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_16_SPP_225_SID_7190.pdf} \\
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_17_SPP_225_SID_7192.pdf} & 
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_18_SPP_225_SID_7195.pdf}
+  \end{tabular}
+  \caption{Length distribution by sex for Pacific Hake for sets 14, 16, 17, and 18. Refer to figures \ref{Survey}, \ref{SurveyCloseTexada}, and \ref{SurveyClosePollockGrid} for set locations. The gaussian kernel density functions use bandwidth $\frac{0.9 \sigma}{1.34n^{-1/5}} $ ({\it Silverman, 1986 \cite{Density}}).}
+  \label{HakeLengthDist14-18}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=4.00in]{../AgeStructure/sog_Pollock_length_barplot.pdf}
+  \caption{Length distribution for Walleye Pollock from all sets. The gaussian kernel density function with bandwidth $\frac{0.675 \sigma}{1.34n^{-1/5}} $ helps illustrate the bimodality of the distribution ({\it Silverman, 1986 \cite{Density}}).}
+  \label{PollockLengthDist}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_3_SPP_228_SID_7169.pdf} &
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_4_SPP_228_SID_7170.pdf} \\
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_5_SPP_228_SID_7171.pdf} & 
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_6_SPP_228_SID_7172.pdf}
+  \end{tabular}
+  \caption{Length distribution by sex for Walleye Pollock for sets 3, 4, 5, and 6. Refer to figures \ref{Survey}, \ref{SurveyCloseTexada}, and \ref{SurveyClosePollockGrid} for set locations. The gaussian kernel density functions use bandwidth $\frac{0.9 \sigma}{1.34n^{-1/5}} $ ({\it Silverman, 1986 \cite{Density}}).}
+  \label{PollockLengthDist3-6}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_7_SPP_228_SID_7173.pdf} &
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_8_SPP_228_SID_7174.pdf} \\
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_9_SPP_228_SID_7177.pdf} & 
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_14_SPP_228_SID_7184.pdf}
+  \end{tabular}
+  \caption{Length distribution by sex for Walleye Pollock for sets 7, 8, 9, and 14. Refer to figures \ref{Survey}, \ref{SurveyCloseTexada}, and \ref{SurveyClosePollockGrid} for set locations. The gaussian kernel density functions use bandwidth $\frac{0.9 \sigma}{1.34n^{-1/5}} $ ({\it Silverman, 1986 \cite{Density}}).}
+  \label{PollockLengthDist7-14}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_15_SPP_228_SID_7187.pdf} &
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_16_SPP_228_SID_7189.pdf}
+  \end{tabular}
+  \includegraphics[width=3.00in]{../Length_frequency_samples/set_17_SPP_228_SID_7194.pdf}
+  \caption{Length distribution by sex for Walleye Pollock for sets 15, 16, and 17. Refer to figures \ref{Survey}, \ref{SurveyCloseTexada}, and \ref{SurveyClosePollockGrid} for set locations. The gaussian kernel density functions use bandwidth $\frac{0.9 \sigma}{1.34n^{-1/5}} $ ({\it Silverman, 1986 \cite{Density}}).}
+  \label{PollockLengthDist15-17}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=4.00in]{../lengthweight-relationships/sog2011-hake-lw-relationship.pdf}
+  \caption{Length-Weight relationship for Strait of Georgia Pacific Hake based on samples from 11 midwater trawl sets. The relationship is defined as $w = 0.0034219 \ell^{3.16862}$.}
+  \label{HakeLW}
+  \includegraphics[width=4.00in]{../lengthweight-relationships/sog2011-pollock-lw-relationship.pdf}
+  \caption{Length-Weight relationship for Strait of Georgia Walleye Pollock based on samples from 9 midwater trawl sets. The relationship is defined as $w = 0.00547008 \ell^{3.08008}$.}
+  \label{PollockLW}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=4.00in]{../hake-lengthweight-model/sog2011-hake-la-relationship.pdf}
+  \caption{Length-Age relationship for Strait of Georgia Pacific Hake based on samples from 11 midwater trawl sets.  The Von Bertalanffy relationship is defined as $L_t = 43.8308 (1-e^{-0.410165t})$.}
+  \label{HakeLA}
+\end{figure*}
+
+\end{document}
+
