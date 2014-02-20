@@ -1,6 +1,5 @@
-\documentclass[twocolumn]{article} % default is 10 pt
+\documentclass[twocolumn]{article}
 \usepackage{graphicx} % needed for including graphics e.g. EPS, PS
-% This is a comment!
 
 %\usepackage{epstopdf}
 %\DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
@@ -91,14 +90,13 @@ minus3pt\let\@listi\@listI}
 \thispagestyle{empty}
 
 \subsection*{\centering Abstract}
-% >>>>>>>>>>>>>>>>>>>>>>>>> Keywords and Abstract <<<<<<<<<<<<<<<<<<<<<
+
 {\em Keywords: 
   Latex, Git
 
   This document is an example of what Git and Latex can do. The two can be used together to track changes to a document.
 }
 
-%\section*{Introduction \Left\Homer}
 \section*{Introduction}
 {\it Git} version control and {\it Latex} typesetting software can be use together to collaborate on documents and track changes.
 
@@ -111,7 +109,7 @@ The minimization took place on the squared difference of the predicted weights a
 z=\sum_{i}(wpred_i-w_i)^2
 \end{equation}
 \\
-where {\it wpred} are the predicted weights and {\it w} are the actual weights.\\
+where {\it wpred} are the predicted weights and {\it w} are the actual weights.
 The data came from 11 trawls. A Monte Carlo Markov Chain (MCMC) with a chain length of 10,000
 was executed for the models and convergence was good for both species.  The length-weight relationship is defined as:
 \\
@@ -119,17 +117,13 @@ was executed for the models and convergence was good for both species.  The leng
  \omega=\alpha \ell^{\beta}
 \end{equation}
 \\
-
 The values of $\alpha$ and $\beta$ were found to be 0.0034219 and 3.16862 respectively.
-Figure \ref{HakeLW} shows the data and model for Hake. 
 The corresponding equations are:
-
 \\
 \begin{equation}\label{LWHake}
 w = 0.0034219 \ell^{3.16862}
 \end{equation}
 \\
-
 Length-at-age was also examined for Pacific Hake, in a similar fashion as the length-weight relationship.  The code for this growth model can be found in {\it Program \ref{lacode}}.  The minimization took place on the squared difference of the predicted lengths and the observed lengths according to the formula:
 \\
 \begin{equation}\label{LAnorm2}
@@ -143,81 +137,13 @@ L_t = L_\infty (1 - e^{(-kt)})
 \end{equation}
 \\
 where $L_\infty$ is the asymptotic maximum fork length, $k$ is the growth coefficient, and $L_t$ is the fork length at time t, the age in years. 
-For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 0.410165 respectively.  Figure \ref{HakeLA} shows this relationship along with the associated data points used in the minimization.
+For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 0.410165 respectively.
 
 \begin{thebibliography}{99}
-
-\bibitem{FisheriesAcoustics} Simmonds, J., and MacLennan, D.,
-{\it Fisheries Acoustics Theory and Practice Second Ed. 
-Fisheries and Aquatic Resources Series 10, Blackwell Science Ltd, 2005.
-}
-
-\bibitem{2005Survey} Fleischer, G.W., Cooke, K.D., Ressler, P.H., Thomas, R.E., de Blois, S.K., Hufnagle, L.C.,
-{\it The 2005 Integrated Acoustic and Trawl Survey of Pacific hake, Merluccius Productus, in U.S. and Canadian Waters off the
-Pacific Coast,
-U.S. Dept. Commer., NOAA Tech. Memo.,NMFS-NWFSC-94, 41 p, 2008.
-}
-
-\bibitem{2007Survey} de Blois, S.K.D., Chu, D., and Cooke, K.D.
-{\it Results of the 2007 Integrated Acoustic and Trawl Survey of Pacific Hake (Merluccius productus) in
-U.S. and Canadian Waters off the Pacific Coast
-NWFSC Processed Rep. 2009-xx, 70 p, 2009.
-}
-
-\bibitem{Taylor} Taylor, F.H.C., Kieser, R.,
-{\it Hydroacoustic and Fishing Surveys for Walleye Pollock ({\it Theregra Chalcogramma}) in Dixon Entrance and Northern Hecate Strait, January 22 - February 9, 1979,
-Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1624, February 1981.
-}
-
-\bibitem{TaylorHerring} Taylor, F.H.C., Kieser, R.,
-{\it Distribution and Abundance of Herring and Other Pelagic Fish Off the West Coast of Vancouver Island in September, November 1980, and March 1981, and in the Strait of Georgia in November 1980,
-Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1682, December 1982.
-}
-%\cofeA{0.075}{0.7}{253}
-
-\bibitem{Kieser81} Kieser, R.,
-{\it Hydroacoustic Biomass Estimates of Bathypelagic Groundfish in Georgia Strait, January, February, and April, 1981,
-Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1715, August 1983.
-}
-
-\bibitem{Thompson} Thompson, J.M., McFarlane, G.A.,
-{\it Distribution and Abundance of Pacific Hake and Walleye Pollock in the Strait of Georgia, March 24 - May 2, 1981,
-Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 1661, May 1982.
-}
-
-\bibitem{Traynor96} Traynor, J.J., 
-{\it Target Strength Measurements of Walleye Pollock ({\it Theregra Chalcogramma}) and Pacific Whiting {\it Merluccius Productus},
-ICES J. Mar. Sci. 53:253-258, 1996.
-}
-
-\bibitem{Kieser98} Kieser, R., Cooke, K., Andrews, B., McFarlane, S., Smith, S.,
-{\it A Hydroacoustic Survey of Pacific Hake in the Strait of Georgia, British Columbia, Canada, February 20 - March 5, 1996,
-Canadian Manuscript Report of Fisheries and Aquatic Sciences No. 2456, 1998.
-}
-
-\bibitem{KieserBiomassReview} Kieser, R., Saunders, M.W., Cooke, K.,
-{\it Review of Hydroacoustic Methodology and Pacific Hake Biomass Estimates for the Strait of Georgia, 1981 to 1998,
-Canadian Stock Assessment Secretariat, Resesarch Document 99/15, 1999.
-}
-
-\bibitem{FooteTSHake} Foote, K.G., 
-{\it Fish Target Strengths For Use in Echo Integrator Surveys, 
-J. Acoust. Soc. Am. 82(3), September 1987
-}
-
-\bibitem{FooteTSPollock} Foote, K.G.,
-{\it Comparison of Walleye Pollock Target Strength Estimates Determined From in situ Measurements and Calculations Based on Swimbladder Form,
-J. Acoust. Soc. Am., 83(1), January 1988.
-}
 
 \bibitem{ADMB} Otter Research, 
 {\it An Introduction to AD Model Builder for use in Nonlinear Modeling and Statistics,
 Otter Research Ltd., Nanaimo, B.C., Canada, 1994.
-}
-
-\bibitem{Density} Silverman, B.W.,
-{\it Density Estimation,
-Chapman and Hall, 1986, ISBN 9780412246203.
 }
 
 \end{thebibliography}
