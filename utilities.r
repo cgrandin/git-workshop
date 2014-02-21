@@ -49,7 +49,7 @@ getShadeExample <- function(func={function(x) dbeta(x,7,2)},
                             ){
   # An example of how getShade and getCurrFunc() works
   # Set col to be an R color and opacity to a number between 1 and 99
-  cat0(getCurrFunc(),"getShade() returned ",shade)
+  #cat0(getCurrFunc(),"getShade() returned ",shade)
   out   <- curve(func, ...)
   z     <- NULL
   z$x   <- out$x[c(1,1:length(out$x),length(out$x))]

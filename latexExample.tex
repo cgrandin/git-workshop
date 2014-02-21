@@ -79,7 +79,7 @@ minus3pt\let\@listi\@listI}
 %\date{}
 
 % >>>>>>>>>>>>>>>>>>>>>>>  Put your title here <<<<<<<<<<<<<<<<<<<<<<<<
-% make title bold and 14 pt font (Latex default is non-bold, 16pt) 
+% make title bold and 14 pt font (Latex default is non-bold, 16pt)
 \title{\Large {\bf An Example of A Latex Document}}
 
 % >>>>>>>>>>>>>>>>>>>>>>> Author's Names, Thanks or Affliation <<<<<<<<
@@ -91,8 +91,8 @@ minus3pt\let\@listi\@listI}
 
 \subsection*{\centering Abstract}
 
-{\em Keywords: 
-  Latex, Git, knitr
+{\em Keywords:
+  Latex, git, knitr
 
   This document is an example of what Git, Latex, and the R package 'knitr' can do. The three can be used together to create a
   document and to track changes easliy.
@@ -101,48 +101,50 @@ minus3pt\let\@listi\@listI}
 \section*{Introduction}
 {\it Git} version control and {\it Latex} typesetting software can be use together to collaborate on documents and track changes.
 
-The length-weight relationship for Strai of Georgia Pacific Hake were determined by using AD Model builder software ({\it ADMB}) \cite{ADMB}
+The length-weight relationship for Strait of Georgia Pacific Hake were determined by using AD Model builder software ({\it ADMB}) \cite{ADMB}
 to fit a simple 2-parameter nonlinear model ({\it Program \ref{lwcode}}) to the length-weight data acquired from sampling of the
 midwater trawls for each species.
 The minimization took place on the squared difference of the predicted weights and the actual weights according to the formula:
-\\
+
 \begin{equation}\label{EQnorm2}
 z=\sum_{i}(wpred_i-w_i)^2
 \end{equation}
-\\
+
 where {\it wpred} are the predicted weights and {\it w} are the actual weights.
 The data came from 11 trawls. A Monte Carlo Markov Chain (MCMC) with a chain length of 10,000
-was executed for the models and convergence was good for both species.  The length-weight relationship is defined as:
-\\
+was executed for the models and convergence was good.  The length-weight relationship is defined as:
+
 \begin{equation}\label{EQlengthweight}
  \omega=\alpha \ell^{\beta}
 \end{equation}
-\\
-The values of $\alpha$ and $\beta$ were found to be 0.0034219 and 3.16862 respectively.
-The corresponding equations are:
-\\
-\begin{equation}\label{LWHake}
-w = 0.0034219 \ell^{3.16862}
-\end{equation}
-\\
-Length-at-age was also examined for Pacific Hake, in a similar fashion as the length-weight relationship.  The code for this growth model can be found in {\it Program \ref{lacode}}.  The minimization took place on the squared difference of the predicted lengths and the observed lengths according to the formula:
-\\
-\begin{equation}\label{LAnorm2}
-z=\sum_{i}(\ell pred_i-\ell_i)^2
-\end{equation}
-\\
-for the Von Bertalanffy relationship:
-\\
-\begin{equation}\label{VonB}
-L_t = L_\infty (1 - e^{(-kt)})
-\end{equation}
-\\
-where $L_\infty$ is the asymptotic maximum fork length, $k$ is the growth coefficient, and $L_t$ is the fork length at time t, the age in years. 
-For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 0.410165 respectively.
+
 %% begin.rcode, echo=FALSE
 %  source('utilities.r')
 %  source('getOutput.r')
 %% end.rcode
+The values of $\alpha$ and $\beta$ were found to be \rinline{lw[[2]][1,]} and \rinline{lw[[2]][2,]} respectively.
+The corresponding equations are:
+
+\begin{equation}\label{LWHake}
+w = \rinline{lw[[2]][1,]} \ell^{\rinline{lw[[2]][2,]}}
+\end{equation}
+
+Length-at-age was also examined for Pacific Hake, in a similar fashion as the length-weight relationship.
+The code for this growth model can be found in {\it Program \ref{lacode}}.
+The minimization took place on the squared difference of the predicted lengths and the observed lengths according to the formula:
+\begin{equation}\label{LAnorm2}
+z=\sum_{i}(\ell pred_i-\ell_i)^2
+\end{equation}
+
+for the Von Bertalanffy relationship:
+
+\begin{equation}\label{VonB}
+L_t = L_\infty (1 - e^{(-kt)})
+\end{equation}
+
+where $L_\infty$ is the asymptotic maximum fork length, $k$ is the growth coefficient, and $L_t$ is the fork length at time t, the age in years.
+For Pacific Hake, the values of $L_\infty$ and $k$ were found to be \rinline{vonb[[2]][1,]} and \rinline{vonb[[2]][2,]} respectively.
+
 \clearpage
 \begin{figure*}
 %% begin.rcode, echo=FALSE, lengthWeightFigure, dev='cairo_pdf'
@@ -175,7 +177,8 @@ For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 
 \end{figure*}
 
 \begin{thebibliography}{99}
-\bibitem{ADMB} Otter Research, 
+
+\bibitem{ADMB} Otter Research,
 {\it An Introduction to AD Model Builder for use in Nonlinear Modeling and Statistics,
 Otter Research Ltd., Nanaimo, B.C., Canada, 1994.
 }
