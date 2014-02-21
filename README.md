@@ -1,6 +1,7 @@
 ---
 # git-workshop
 
+
 **Created by Chris Grandin, February 2014**
 
 git-workshop is a repository for learning how to use git version control.
