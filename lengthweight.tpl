@@ -23,5 +23,5 @@ PROCEDURE_SECTION
   f = (norm2(Wpred-W)); 
 
 REPORT_SECTION
-  report<<"a = "<<a<<endl;
-  report<<"b = "<<b<<endl;
+  report<<"#a"<<endl<<a<<endl;
+  report<<"#b"<<endl<<b<<endl;

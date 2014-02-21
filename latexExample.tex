@@ -92,15 +92,16 @@ minus3pt\let\@listi\@listI}
 \subsection*{\centering Abstract}
 
 {\em Keywords: 
-  Latex, Git
+  Latex, Git, knitr
 
-  This document is an example of what Git and Latex can do. The two can be used together to track changes to a document.
+  This document is an example of what Git, Latex, and the R package 'knitr' can do. The three can be used together to create a
+  document and to track changes easliy.
 }
 
 \section*{Introduction}
 {\it Git} version control and {\it Latex} typesetting software can be use together to collaborate on documents and track changes.
 
-The length-weight relationship for both Pacific Hake were determined by using AD Model builder software ({\it ADMB}) \cite{ADMB}
+The length-weight relationship for Strai of Georgia Pacific Hake were determined by using AD Model builder software ({\it ADMB}) \cite{ADMB}
 to fit a simple 2-parameter nonlinear model ({\it Program \ref{lwcode}}) to the length-weight data acquired from sampling of the
 midwater trawls for each species.
 The minimization took place on the squared difference of the predicted weights and the actual weights according to the formula:
@@ -138,9 +139,42 @@ L_t = L_\infty (1 - e^{(-kt)})
 \\
 where $L_\infty$ is the asymptotic maximum fork length, $k$ is the growth coefficient, and $L_t$ is the fork length at time t, the age in years. 
 For Pacific Hake, the values of $L_\infty$ and $k$ were found to be 43.8308 and 0.410165 respectively.
+%% begin.rcode, echo=FALSE
+%  source('utilities.r')
+%  source('getOutput.r')
+%% end.rcode
+\clearpage
+\begin{figure*}
+%% begin.rcode, echo=FALSE, lengthWeightFigure, dev='cairo_pdf'
+%  plotLW(lw)
+%% end.rcode
+\caption{Length-weight relationship for Pacific Hake}
+\label{figLengthWeight}
+\end{figure*}
+
+\begin{figure*}
+%% begin.rcode, echo=FALSE, normFig, dev='cairo_pdf'
+%  getShadeExample(func={function(x) dnorm(x,0,0.25)},from=-1,to=1, lwd=2, col="red", yaxp=c(0,3,30))
+%% end.rcode
+\caption{Example of a normal distribution using getShade function}
+\label{figNormalDist}
+\end{figure*}
+
+\begin{figure*}
+%% begin.rcode, echo=FALSE, chiSqFigFigure, dev='cairo_pdf'
+%  getShadeExample(func={function(x) dchisq(x,100,df=10)},
+%                  from=0,
+%                  to=20,
+%                  lwd=2,
+%                  col="black",
+%                  shade=getShade("green",opacity=20),
+%                  yaxp=c(0,3,30))
+%% end.rcode
+\caption{Example of a chi square distribution using getShade function}
+\label{figChisquareDist}
+\end{figure*}
 
 \begin{thebibliography}{99}
-
 \bibitem{ADMB} Otter Research, 
 {\it An Introduction to AD Model Builder for use in Nonlinear Modeling and Statistics,
 Otter Research Ltd., Nanaimo, B.C., Canada, 1994.

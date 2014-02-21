@@ -98,11 +98,11 @@ cat0 <- function(...){
   cat(..., "\n", sep="")
 }
 
-getShadeExample(func={function(x) dnorm(x,0,0.25)},from=-1,to=1, lwd=2, col="red", yaxp=c(0,3,30))
-getShadeExample(func={function(x) dchisq(x,100,df=10)},
-                from=0,
-                to=20,
-                lwd=2,
-                col="black",
-                shade=getShade("green",opacity=20),
-                yaxp=c(0,3,30))
+#getShadeExample(func={function(x) dnorm(x,0,0.25)},from=-1,to=1, lwd=2, col="red", yaxp=c(0,3,30))
+#getShadeExample(func={function(x) dchisq(x,100,df=10)},
+#                from=0,
+#                to=20,
+#                lwd=2,
+#                col="black",
+#                shade=getShade("green",opacity=20),
+#                yaxp=c(0,3,30))

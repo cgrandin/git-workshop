@@ -22,5 +22,5 @@ PROCEDURE_SECTION
   f = (norm2(Lpred-L)); 
 
 REPORT_SECTION
-  report<<"Linf = "<<Linf<<endl;
-  report<<"K = "<<K<<endl;
+  report<<"#Linf"<<endl<<Linf<<endl;
+  report<<"#K"<<endl<<K<<endl;
