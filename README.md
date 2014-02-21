@@ -1,9 +1,31 @@
-____
+---
 # git-workshop
 
-git-workshop is a teaching repository created by Chris Grandin on Feb 10, 2014
+**Created by Chris Grandin, February 2014**
+
+git-workshop is a repository for learning how to use git version control.
+Also included are examples for using *Latex* and the R package *knitr* to apply version control to documents
+which are to be edited by more than one person, working collaboratively.
+
+
+The purpose is to introduce git version control to new users and supply some
+useful tools for working with git.
 
 ---
+
+To make everything in this repository work correctly, you will need to [sign up for Github](https://github.com/ "Create account on Github"),
+and install the following things on your computer:
+
+1. [Microsoft .NET 4.5.1](http://go.microsoft.com/fwlink/p/?LinkId=310158 ".NET 4.5.1")
+2. [Github for Windows](http://windows.github.com "Github for Windows")
+3. [Miktex typesetting software](http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe "Miktex")
+4. The knitr package for R - install.packages("knitr")
+
+---
+
+Once you have installed github for Windows, open the Git Shell and type the following to get the repository:
+
+      git clone https://github.com/cgrandin/git-workshop
 
 ## Useful commands in the Git Shell
 
