@@ -14,27 +14,38 @@ useful tools for working with git.
 ---
 
 To make everything in this repository work correctly, you will need to [sign up for Github](https://github.com/ "Create account on Github"),
-and install the following things on your computer:
+and install the following things on your computer.
 
-1. [Microsoft .NET 4.5.1](http://go.microsoft.com/fwlink/p/?LinkId=310158 ".NET 4.5.1")
+[Which .NET version is on my machine?](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")
+
+1. If you have a .NET version less than 4.5, then upgrade it: [Microsoft .NET 4.5.1](http://go.microsoft.com/fwlink/p/?LinkId=310158 ".NET 4.5.1")
 2. [Github for Windows](http://windows.github.com "Github for Windows")
 3. [Miktex typesetting software](http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe "Miktex")
 4. The knitr package for R - install.packages("knitr")
 
 ---
 
-Once you have installed github for Windows, open the Git Shell and type the following to get the repository:
+Once you have installed github for Windows, go to my [git-workshop](https://github.com/cgrandin/git-workshop "https://github.com/cgrandin/git-workshop")
+and **Fork** the project (button on the top right).
 
-      git clone https://github.com/cgrandin/git-workshop
+Open the Git Shell. The shortcut should be
+**C:\Users\your-computer-user-name\AppData\Local\GitHub\GitHub.appref-ms --open-shell**
+
+It should start you in the directory **c:\github**
+
+Type the following to clone your repository onto your local machine:
+
+      git clone https://github.com/your-git-user-name/git-workshop
 
 ## Useful commands in the Git Shell
-
       git help                          <List git commands>
       git clone url                     <Clone repository found at url>
       git status                        <View changes & staging>
       gitk                              <GUI - show revision tree information>
       git gui                           <GUI - show revisions, merge branches>
       git remote -v                     <Look at all remote data sources (URLs)>
+      git remote add NAME URL           <Add the remote reposiroty at URL, and give it the name NAME>
+      git fetch NAME                    <Fetch the commits from the repository denoted by NAME>
       git add FILENAME                  <Add new file called FILENAME>
       git remove FILENAME               <Remove existing file called FILENAME>
       git rm FILENAME                   <Remove existing file called FILENAME>
@@ -56,8 +67,8 @@ Once you have installed github for Windows, open the Git Shell and type the foll
       git r                             <View remote URLs for the project, same as 'git remote -v'>
       git s                             <View status of the repository, same as 'git status'>
       git f                             <View sync information between remote/master and master>
-      git co  "NAME"                    <Change to branch "NAME", same as 'git checkout "NAME"'>
-      git cb  "NAME"                    <Create branch "NAME", same as 'git checkout -b "NAME"'>
+      git co NAME                       <Change to branch "NAME", same as 'git checkout "NAME"'>
+      git cb NAME                       <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"                 <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
       git pom                           <Push to origin/master (Github), same as 'git push origin master'>
       git mas                           <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
