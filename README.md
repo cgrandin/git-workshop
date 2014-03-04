@@ -13,25 +13,29 @@ useful tools for working with git.
 
 ---
 
-To make everything in this repository work correctly, you will need to [sign up for Github](https://github.com/ "Create account on Github"),
-and install the following things on your computer.
+To make everything in this repository work correctly, you will need to <a href="https://github.com/" target="_blank">sign up for GitHub</a>
+and install the following things on your computer. If you have older versions of GitHub or MikTex installed, remove them and start fresh.
+GitHub *requires* Microsoft .NET 4.5.1 as of February 2014.
 
-[Which .NET version is on my machine?](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")
-
-1. If you have a .NET version less than 4.5, then upgrade it: [Microsoft .NET 4.5.1](http://go.microsoft.com/fwlink/p/?LinkId=310158 ".NET 4.5.1")
-2. [Github for Windows](http://windows.github.com "Github for Windows")
-3. [Miktex typesetting software](http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe "Miktex")
+1. If you have a .NET version less than 4.5 ([Check version](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")), then upgrade it: <a href="http://go.microsoft.com/fwlink/p/?LinkId=310158" target="_blank">Microsoft .NET 4.5.1</a>. Note this takes a long time!
+2. <a href="http://windows.github.com" target="_blank">GitHub for Windows</a>
+3. <a href="http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe" target="_blank">Miktex typesetting software</a>
 4. The knitr package for R - install.packages("knitr")
 
 ---
 
-Once you have installed github for Windows, go to my [git-workshop](https://github.com/cgrandin/git-workshop "https://github.com/cgrandin/git-workshop")
-and **Fork** the project (button on the top right).
+Once you have installed GitHub for Windows, go to my [git-workshop](https://github.com/cgrandin/git-workshop "https://github.com/cgrandin/git-workshop")
+, make sure you are signed in, and **Fork** the project (button on the top right). This will create a copy of the repository on your GitHub site.
 
-Open the Git Shell. The shortcut should be
+Open the GitHub Application. Choose Tools->Options and under *configure git*, fill in your name, the email address you used for signing up to GitHub,
+and change your *default storage directory* to something simple that you will be able to find later. I recommend **c:\github**. Make sure that for
+*default shell*, *PowerShell* is checked. *pull behavior* should have *use rebase for pulls* checked. Click *Update* and close the application.
+**This is a one-time step and you will not need to do it again unless you want to sign in with a different user name.**
+
+Open the Git Shell, (not the GitHub application). The shortcut should be
 **C:\Users\your-computer-user-name\AppData\Local\GitHub\GitHub.appref-ms --open-shell**
 
-It should start you in the directory **c:\github**
+Note your starting directory, this is where your files will be. It should be the same as the one you entered into the GutHub application in the steps above.
 
 Type the following to clone your repository onto your local machine:
 
@@ -70,7 +74,7 @@ Type the following to clone your repository onto your local machine:
       git co NAME                       <Change to branch "NAME", same as 'git checkout "NAME"'>
       git cb NAME                       <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"                 <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
-      git pom                           <Push to origin/master (Github), same as 'git push origin master'>
+      git pom                           <Push to origin/master (GitHub), same as 'git push origin master'>
       git mas                           <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
       git sam                           <Show difference between origin/master and local master, same as 'git log ^master origin/master'>
       git dl                            <Show modified files in last commit>
@@ -80,9 +84,9 @@ Type the following to clone your repository onto your local machine:
       git ld                            <Show one-line commits with reletive times in a colored format>
       git wdiff                         <Highlight individual words when diffing, same as 'idiff --word-diff=plain'>
 
-There are many online resources for GIT and most of them can be found at: http://git-scm.com/documentation
+There are many online resources for git and most of them can be found at: http://git-scm.com/documentation
 
-A very useful video tutorial, a must watch if you will be using GIT: http://www.youtube.com/watch?v=ZDR433b0HJY
+A very useful video tutorial, a must watch if you will be using git: http://www.youtube.com/watch?v=ZDR433b0HJY
 
 ---
 
