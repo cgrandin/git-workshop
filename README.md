@@ -17,7 +17,7 @@ To make everything in this repository work correctly, you will need to <a href="
 and install the following things on your computer. If you have older versions of GitHub or MikTex installed, remove them and start fresh.
 GitHub *requires* Microsoft .NET 4.5.1 as of February 2014.
 
-1. If you have a .NET version less than 4.5 ([Check version](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")), then upgrade it: <a href="http://go.microsoft.com/fwlink/p/?LinkId=310158" target="_blank">Microsoft .NET 4.5.1</a>. Note this takes a long time!
+1. If you have a .NET version less than 4.5 ([Check version](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")), then upgrade it: <a href="http://go.microsoft.com/fwlink/p/?LinkId=310158" target="_blank">Microsoft .NET 4.5.1</a>.
 2. <a href="http://windows.github.com" target="_blank">GitHub for Windows</a>
 3. <a href="http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe" target="_blank">Miktex typesetting software</a>
 4. The knitr package for R - install.packages("knitr")
