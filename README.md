@@ -65,18 +65,18 @@ Type the following to clone your repository onto your local machine:
       git push origin --delete NAME     <Delete the branch NAME from the remote>
       git reset HEAD~N                  <Move back N commits, keeping changes from last N-1 commits>
       git reset --hard HEAD~N           <Move back N commits, destroying changes made in latest N-1 commits>
-      git log --diff-filter=D --summary <Shows all files which were ever deleted and then committed>
+      git log --diff-filter=D --summary <Shows all commits in which files were deleted>
 
 ## Useful Git aliases
       git r                             <View remote URLs for the project, same as 'git remote -v'>
       git s                             <View status of the repository, same as 'git status'>
-      git f                             <View sync information between remote/master and master>
+      git f                             <View sync information between origin master and master>
       git co NAME                       <Change to branch "NAME", same as 'git checkout "NAME"'>
       git cb NAME                       <Create branch "NAME", same as 'git checkout -b "NAME"'>
       git com "MESSAGE"                 <Commit all with message, same as 'git commit -a -m "MESSAGE"'>
-      git pom                           <Push to origin/master (GitHub), same as 'git push origin master'>
-      git mas                           <Show difference between local master and origin/master, same as 'git log master ^origin/master'>
-      git sam                           <Show difference between origin/master and local master, same as 'git log ^master origin/master'>
+      git pom                           <Push to origin master (GitHub), same as 'git push origin master'>
+      git mas                           <Show difference between local and remote masters, same as 'git log master ^origin/master'>
+      git sam                           <Show difference between remote and local master, same as 'git log ^master origin/master'>
       git dl                            <Show modified files in last commit>
       git dlc                           <Show file differences in last commit>
       git lg                            <Show merge structure in a colored format>
@@ -84,9 +84,12 @@ Type the following to clone your repository onto your local machine:
       git ld                            <Show one-line commits with reletive times in a colored format>
       git wdiff                         <Highlight individual words when diffing, same as 'idiff --word-diff=plain'>
 
-There are many online resources for git and most of them can be found at: http://git-scm.com/documentation
+This is a great resource for understanding git: <a href="http://git-scm.com/documentation" target="_blank">git-scm</a>
 
-A very useful video tutorial, a must watch if you will be using git: http://www.youtube.com/watch?v=ZDR433b0HJY
+A very useful video tutorial by a GitHub expert, a must watch if you will be using git: <a href="http://www.youtube.com/watch?v=ZDR433b0HJY" target="_blank">Git Video</a>
+
+posh-git is the project which is the Git Shell we have been using here. Check out the details about the prompt and other things here:
+<a href="https://github.com/dahlbyk/posh-git" target="_blank">posh-git</a>
 
 ---
 
