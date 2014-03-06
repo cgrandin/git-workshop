@@ -1,4 +1,3 @@
-# master branch
 getShade <- function(color, opacity){
   # If color is a single R color string or single number,
   #  returns an rgb string of the specified color and opacity
