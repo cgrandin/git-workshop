@@ -35,7 +35,7 @@ and change your *default storage directory* to something simple that you will be
 Open the Git Shell, (not the GitHub application). The shortcut should be
 **C:\Users\your-computer-user-name\AppData\Local\GitHub\GitHub.appref-ms --open-shell**
 
-Note your starting directory, this is where your files will be. It should be the same as the one you entered into the GutHub application in the steps above.
+Note your starting directory, this is where your files will be. It should be the same as the one you entered into the GitHub application in the steps above.
 
 Type the following to clone your repository onto your local machine:
 
