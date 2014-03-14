@@ -63,7 +63,7 @@ Type the following to clone your repository onto your local machine:
       git log branchA ^branchB          <show log of commits in branchA but not in branchB>
       git log master ^origin/master     <Show difference between local master and origin/master (latest copy of remote)>
       git push origin --delete NAME     <Delete the branch NAME from the remote>
-      git reset HEAD~N                  <Move back N commits, keeping changes from last N-1 commits>
+      git reset --soft HEAD~N           <Undo commits safely. Move back N commits, keeping changes from last N-1 commits>
       git reset --hard HEAD~N           <Move back N commits, destroying changes made in latest N-1 commits>
       git log --diff-filter=D --summary <Shows all commits in which files were deleted>
 
