@@ -1,4 +1,4 @@
-echo on
+echo off
 del variance /Q /F
 del *.bar /Q /F
 del *.cov /Q /F
