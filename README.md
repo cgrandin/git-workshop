@@ -47,6 +47,7 @@ Type the following to clone your repository onto your local machine:
       git status                        <View changes & staging>
       gitk                              <GUI - show revision tree information>
       git gui                           <GUI - show revisions, merge branches>
+      git mergetool                     <GUI - merge helper. DiffMerge from sourcegear is a good one>
       git remote -v                     <Look at all remote data sources (URLs)>
       git remote add NAME URL           <Add the remote reposiroty at URL, and give it the name NAME>
       git fetch NAME                    <Fetch the commits from the repository denoted by NAME>
