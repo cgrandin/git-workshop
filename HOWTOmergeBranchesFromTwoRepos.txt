@@ -6,6 +6,8 @@ Assuming you have executed these commmands:
 git clone https://github.com/your-github-name/iSCAM
 git remote add smartell https://github.com/smartell/iSCAM
 git remote add cgrandin https://github.com/cgrandin/iSCAM
+git fetch smartell
+git fetch cgrandin
 
 Take a look at ALL remote branches in the repository, including the cached remote branches,
 it should look something like this:
