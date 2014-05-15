@@ -64,12 +64,15 @@ Type the following to clone your repository onto your local machine:
       git branch -D NAME                <Forcibly delete the branch called NAME>
       git log branchA ^branchB          <show log of commits in branchA but not in branchB>
       git log master ^origin/master     <Show difference between local master and origin/master (latest copy of remote)>
+      git push origin NAME              <Add the local branch NAME to the remote>
       git push origin --delete NAME     <Delete the branch NAME from the remote>
       git reset --soft HEAD~N           <Undo commits safely. Move back N commits, keeping changes from last N-1 commits>
       git reset --hard HEAD~N           <Move back N commits, destroying changes made in latest N-1 commits>
       git log --diff-filter=D --summary <Shows all commits in which files were deleted>
       git checkout -- FILENAME          <Undo an unstaged/uncommitted change to FILENAME, i.e. get the file back if deleted>
       git checkout --patch B FILE       <Merge changes to FILE from branch B into your current branch>
+      git checkout -b NAME remote/NAME  <Create a local branch NAME from the remote NAME that you fetched>
+      git checkout -p NAME FILENAME     <Merge the file FILENAME from the branch NAME into your current branch>
 ## Useful Git aliases
       git r                             <View remote URLs for the project, same as 'git remote -v'>
       git s                             <View status of the repository, same as 'git status'>
