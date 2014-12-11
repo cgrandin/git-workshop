@@ -3,7 +3,6 @@
 
 *Created by Chris Grandin, February 2014*
 
-Hello World!
 git-workshop is a repository for learning how to use git version control.
 Also included are examples for using *Latex* and the R package *knitr* to apply version control to documents
 which are to be edited by more than one person, working collaboratively.
@@ -20,8 +19,6 @@ GitHub *requires* Microsoft .NET 4.5.1 as of February 2014.
 
 1. If you have a .NET version less than 4.5 ([Check version](https://github.com/downloads/shanselman/SmallestDotNet/CheckForDotNet45.exe "Which .NET version is on my machine?")), then upgrade it: <a href="http://go.microsoft.com/fwlink/p/?LinkId=310158" target="_blank">Microsoft .NET 4.5.1</a>.
 2. <a href="http://windows.github.com" target="_blank">GitHub for Windows</a>
-3. <a href="http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe" target="_blank">Miktex typesetting software</a>
-4. The knitr package for R - install.packages("knitr")
 
 ---
 
@@ -35,6 +32,7 @@ and change your *default storage directory* to something simple that you will be
 
 Open the Git Shell, (not the GitHub application). The shortcut should be
 **C:\Users\your-computer-user-name\AppData\Local\GitHub\GitHub.appref-ms --open-shell**
+but with **your-computer-user-name** replaced with your user account name.
 
 Note your starting directory, this is where your files will be. It should be the same as the one you entered into the GitHub application in the steps above.
 
@@ -89,6 +87,8 @@ Type the following to clone your repository onto your local machine:
       git lds                           <Show one-line commits in a colored format>
       git ld                            <Show one-line commits with reletive times in a colored format>
       git wdiff                         <Highlight individual words when diffing, same as 'idiff --word-diff=plain'>
+
+## Resources
 
 This is a great resource for understanding git: <a href="http://git-scm.com/documentation" target="_blank">git-scm</a>
 
